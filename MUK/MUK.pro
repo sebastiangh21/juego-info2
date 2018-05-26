@@ -28,16 +28,22 @@ SOURCES += \
         mainwindow.cpp \
     balafisica.cpp \
     balas.cpp \
-    muk.cpp
+    muk.cpp \
+    form.cpp \
+    principal.cpp
 
 HEADERS += \
         mainwindow.h \
     balafisica.h \
     balas.h \
-    muk.h
+    muk.h \
+    form.h \
+    principal.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    form.ui \
+    principal.ui
 
 RESOURCES += \
     resources.qrc
