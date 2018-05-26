@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>playmove.png</file>
+    </qresource>
+</RCC>
