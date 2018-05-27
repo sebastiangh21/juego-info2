@@ -27,9 +27,10 @@ public:
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     void moverbalas();
-    void agregarbala();
+    void agregarbala(muk *m, int di);
     void inicializacion();
     void getnivel(int n);
+    void moverenemigos();
     void teclas();
     ~Form();
 
@@ -40,6 +41,7 @@ private:
     QList<balas*> bala;
     muk* Muk;
     QList<QGraphicsRectItem*> r;
+    QList<muk*> ene;
     QGraphicsLineItem* l1;
     QGraphicsLineItem* l2;
     QGraphicsLineItem* l3;
@@ -55,6 +57,7 @@ private:
     short int d = 1;
     short int con = 0;
     short int con2 = 22;
+    short int con3 = 0;
 };
 
 #endif // FORM_H

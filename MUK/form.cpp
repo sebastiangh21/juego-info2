@@ -14,6 +14,7 @@ void Form::inicializacion()
     {
         Muk = new muk();
         Muk->setPos(700, 540);
+        Muk->setvida(15);
         timer =new QTimer();
         timer->start(40);
         connect(timer,SIGNAL(timeout()),this,SLOT(animar()));
@@ -50,6 +51,20 @@ void Form::inicializacion()
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(10, 100);
         scene->addItem(r.last());
+        ene.append(new muk());
+        ene.last()->setPos(135,55);
+        scene->addItem(ene.last());
+        ene.last()->setpx(135);
+        ene.last()->setpx1(20);
+        ene.last()->setpx2(233);
+        ene.last()->setvida(4);
+        ene.append(new muk());
+        ene.last()->setPos(625,455);
+        scene->addItem(ene.last());
+        ene.last()->setpx(1075);
+        ene.last()->setpx1(970);
+        ene.last()->setpx2(1150);
+        ene.last()->setvida(4);
     }
 }
 void Form::getnivel(int n)
@@ -61,32 +76,43 @@ void Form::animar()
 
     if(!Muk->collidingItems().empty())
     {
-        if((Muk->collidesWithItem(l2) || Muk->collidesWithItem(l4)) && !Muk->collidesWithItem(l3)) b2 = 1, con2 = 22;
-        if(Muk->collidesWithItem(l1)) b2 = 1, con2 = 22;
-        else b2 = 0;
-    }
-    for(int i = 0; i < r.length(); i++)
-    {
-        if(r.at(i)->collidesWithItem(Muk))
+        if(Muk->collidingItems().size() < 2)
         {
-            if(Muk->y() > r.at(i)->y()-40) bt3 = 0, bt4 = 0, b2 = 1, con2 = 22;
+            if(Muk->collidesWithItem(l2) || Muk->collidesWithItem(l4) || Muk->collidesWithItem(l1)) b2 = 1, con2 = 22;
+            else b2 = 0;
         }
+        else b2 = 0;
+        if(b2 == 0)
+        {
+            for(int i = 0; i < r.length(); i++)
+            {
+                if(r.at(i)->collidesWithItem(Muk))
+                {
+                    if(Muk->y() > r.at(i)->y()-40) bt3 = 0, bt4 = 0, b2 = 1, con2 = 22;
+                    else b2 = 0;
+                    break;
+                }
+                else if(con2 > 20) b2 = 1;
+            }
+        }
+        if(Muk->collidesWithItem(l3)) b2 = 0;
     }
     teclas();
     moverbalas();
+    moverenemigos();
 }
 void Form::teclas()
 {
     if(bt1 == 1 && b == 0)
     {
         b = 1;
-        agregarbala();
+        agregarbala(Muk, d);
         bala.last()->getbaf()->seta(1);//tiro rectilineo
     }
     if(bt2 == 1 && b == 0)
     {
         b = 1;
-        agregarbala();
+        agregarbala(Muk, d);
         bala.last()->getbaf()->seta(0);//tiro parabolico
     }
     if(bt3 == 1 && !Muk->collidesWithItem(l4)) Muk->setPos(Muk->x()-8, Muk->y());
@@ -96,22 +122,33 @@ void Form::teclas()
         Muk->setPos(Muk->x(), Muk->y()-8);
         for(int i = 0; i < r.length(); i++)
         {
-            if(Muk->collidesWithItem(r.at(i)))
-            {
-                con2 = 22;
-            }
+            if(Muk->collidesWithItem(r.at(i))) con2 = 22;
         }
         con2 ++;
     }
-    else if(Muk->collidingItems().empty() || b2 == 1)
-    {
-        Muk->setPos(Muk->x(), Muk->y()+8);
-    }
+    else if(Muk->collidingItems().empty() || b2 == 1) Muk->setPos(Muk->x(), Muk->y()+8);
     else
     {
         if(con2 > 100) con2 = 20;
         con2++;
     }
+}
+void Form::moverenemigos()
+{
+    con3++;
+    for(int i = 0; i<ene.length(); i++)
+    {
+        if(ene.at(i)->getpx() < ene.at(i)->getpx1() || ene.at(i)->getpx() > ene.at(i)->getpx2()) ene.at(i)->setd(-1);
+        ene.at(i)->mover();
+        ene.at(i)->setPos(ene.at(i)->getpx(), ene.at(i)->y());
+        if(con3 > 10)
+        {
+            if(ene.at(i)->getpx() < Muk->x()) agregarbala(ene.at(i), 1);
+            else agregarbala(ene.at(i), -1);
+            bala.last()->getbaf()->seta(1);
+        }
+    }
+    if(con3 > 10) con3 = 0;
 }
 void Form::moverbalas()
 {
@@ -119,51 +156,30 @@ void Form::moverbalas()
     {
         bala[i]->getbaf()->mover();
         bala[i]->setPos(bala[i]->getbaf()->getx(), bala[i]->getbaf()->gety());
-        if(!bala[i]->collidingItems().empty() && !bala[i]->collidesWithItem(Muk))
+        if(!bala[i]->collidingItems().empty())
         {
             scene->removeItem(bala[i]);
             bala.removeAt(i);
         }
     }
     if (b == 1) con++;
-    if(con > 6)
-    {
-        con = 0;
-        b = 0;
-    }
+    if(con > 6) con = 0, b = 0;
 }
-void Form::agregarbala()
+void Form::agregarbala(muk *m, int di)
 {
     bala.append(new balas());
-    bala.last()->getbaf()->setx(Muk->x()+(d*10));
-    bala.last()->getbaf()->sety(Muk->y()-(10));
-    bala.last()->getbaf()->setd(d);
+    bala.last()->getbaf()->setx(m->x()+(di*20));
+    bala.last()->getbaf()->sety(m->y()-(20));
+    bala.last()->getbaf()->setd(di);
     bala.last()->setPos(bala.last()->getbaf()->getx(), bala.last()->getbaf()->gety());
     scene->addItem(bala.last());
 }
 void Form::keyPressEvent(QKeyEvent *event){
-    if(event->key()==Qt::Key_Space)
-    {
-        bt1 = 1;
-    }
-    else if(event->key()==Qt::Key_M)
-    {
-        bt2 = 1;
-    }
-    if(event->key()==Qt::Key_A)
-    {
-        d = -1;
-        bt3 = 1;
-    }
-    if(event->key()==Qt::Key_D)
-    {
-        d = 1;
-        bt4 = 1;
-    }
-    if(event->key()==Qt::Key_W && con2 > 22)
-    {
-        con2 = 0;
-    }
+    if(event->key()==Qt::Key_Space) bt1 = 1;
+    else if(event->key()==Qt::Key_M) bt2 = 1;
+    if(event->key()==Qt::Key_A) d = -1, bt3 = 1;
+    if(event->key()==Qt::Key_D) d = 1, bt4 = 1;
+    if(event->key()==Qt::Key_W && con2 > 22) con2 = 0;
 }
 void Form::keyReleaseEvent(QKeyEvent *event)
 {
@@ -182,4 +198,7 @@ Form::~Form()
     delete l2;
     delete l3;
     delete l4;
+    bala.clear();
+    r.clear();
+    ene.clear();
 }
