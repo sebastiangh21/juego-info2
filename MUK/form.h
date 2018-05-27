@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QGraphicsScene>
 #include <QGraphicsLineItem>
+#include <QGraphicsRectItem>
 #include <QTimer>
 #include <QFile>
 #include "balas.h"
@@ -29,6 +30,7 @@ public:
     void agregarbala();
     void inicializacion();
     void getnivel(int n);
+    void teclas();
     ~Form();
 
 private:
@@ -37,9 +39,13 @@ private:
     QTimer *timer;
     QList<balas*> bala;
     muk* Muk;
-    QList<QGraphicsLineItem*> l;
+    QList<QGraphicsRectItem*> r;
+    QGraphicsLineItem* l1;
+    QGraphicsLineItem* l2;
+    QGraphicsLineItem* l3;
+    QGraphicsLineItem* l4;
     bool b = 0;
-    bool b2 = 0;
+    bool b2 = 1;
     bool bt1 = 0;
     bool bt2 = 0;
     bool bt3 = 0;
@@ -48,7 +54,7 @@ private:
     short int nivel = 1;
     short int d = 1;
     short int con = 0;
-    short int con2 = 21;
+    short int con2 = 22;
 };
 
 #endif // FORM_H

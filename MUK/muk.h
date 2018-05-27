@@ -4,6 +4,8 @@
 #include <QKeyEvent>
 #include <QObject>
 #include <QGraphicsPixmapItem>
+#include <QPainter>
+
 class muk:public QObject,
           public QGraphicsPixmapItem
 {

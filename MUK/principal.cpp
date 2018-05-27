@@ -16,7 +16,7 @@ principal::~principal()
 
 void principal::on_pushButton_clicked()
 {
-    a->getnivel(2);
+    a->getnivel(1);
     a->inicializacion();
     a->show();
     close();
