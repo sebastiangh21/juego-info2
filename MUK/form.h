@@ -32,6 +32,7 @@ public:
     void getnivel(int n);
     void moverenemigos();
     void teclas();
+    void coliciones();
     ~Form();
 
 private:
@@ -46,8 +47,10 @@ private:
     QGraphicsLineItem* l2;
     QGraphicsLineItem* l3;
     QGraphicsLineItem* l4;
+    QGraphicsLineItem* l5;
     bool b = 0;
     bool b2 = 1;
+    bool b3 = 0;
     bool bt1 = 0;
     bool bt2 = 0;
     bool bt3 = 0;

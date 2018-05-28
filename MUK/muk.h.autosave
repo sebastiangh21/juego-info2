@@ -26,7 +26,7 @@ public:
     void setd(int a);
     void sett(bool a);
     bool gett();
-    void mover();
+    void mover(int a);
 };
 
 #endif // MUK_H

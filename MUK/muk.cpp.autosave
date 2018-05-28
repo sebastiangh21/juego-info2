@@ -55,7 +55,7 @@ bool muk::gett()
 {
     return t;
 }
-void muk::mover()
+void muk::mover(int a)
 {
-    px += (d*8);
+    if(a == 1) px += (d*8);
 }

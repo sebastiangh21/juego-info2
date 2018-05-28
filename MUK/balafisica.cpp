@@ -2,7 +2,7 @@
 
 balafisica::balafisica()
 {
-    x = 0, y = 0, d = 0, vy = -15, ay = 1;
+    x = 0, y = 0, d = 0, vy = -13, ay = 1;
 }
 
 int balafisica::getx()

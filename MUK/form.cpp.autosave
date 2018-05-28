@@ -87,6 +87,10 @@ void Form::inicializacion()
         ene.last()->sett(0);
         ene.last()->setvida(4);
     }
+    else if(nivel == 2)
+    {
+        
+    }
 }
 void Form::getnivel(int n)
 {
@@ -168,7 +172,7 @@ void Form::moverenemigos()
     for(int i = 0; i<ene.length(); i++)
     {
         if(ene.at(i)->getpx() < ene.at(i)->getpx1() || ene.at(i)->getpx() > ene.at(i)->getpx2()) ene.at(i)->setd(-1);
-        ene.at(i)->mover();
+        ene.at(i)->mover(1);
         ene.at(i)->setPos(ene.at(i)->getpx(), ene.at(i)->y());
         if(con3 > 15)
         {
