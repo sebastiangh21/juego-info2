@@ -5,7 +5,7 @@
 class balafisica
 {
 private:
-    int x, y, d, vy, ay;
+    int x, y, d, vy, ay, vx;
     bool a;
 public:
     balafisica();
@@ -16,6 +16,7 @@ public:
     void sety(int c);
     void setd(int e);
     void seta(bool r);
+    void setvx(int a);
 };
 
 #endif // BALAFISICA_H

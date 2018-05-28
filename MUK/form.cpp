@@ -1,7 +1,7 @@
 #include "form.h"
 #include "ui_form.h"
-#include <QLabel>
-#include <QSize>
+#include <QDebug>
+#include <QFont>
 
 Form::Form(QWidget *parent) :
     QWidget(parent),
@@ -11,31 +11,31 @@ Form::Form(QWidget *parent) :
 }
 void Form::inicializacion()
 {
+    Muk = new muk();
+    Muk->setPos(0, 540);
+    Muk->setvida(15);
+    ui->label_2->setNum(15);
+    timer =new QTimer();
+    timer->start(40);
+    connect(timer,SIGNAL(timeout()),this,SLOT(animar()));
+    scene = new QGraphicsScene();
+    scene->setSceneRect(0,0,1300,600);
+    ui->graphicsView->setScene(scene);
+    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView->setFixedSize(1300,600);
+    l1=new QGraphicsLineItem(0,0,1300,0);
+    l2=new QGraphicsLineItem(1300,0,1300,600);
+    l3=new QGraphicsLineItem(0,600,1300,600);
+    l4=new QGraphicsLineItem(0,0,0,600);
+    l5=new QGraphicsLineItem(1300,0,1300,100);
+    scene->addItem(l1);
+    scene->addItem(l2);
+    scene->addItem(l3);
+    scene->addItem(l4);
+    scene->addItem(Muk);
     if(nivel == 1)
     {
-        Muk = new muk();
-        Muk->setPos(0, 540);
-        Muk->setvida(15);
-        ui->label_2->setNum(15);
-        timer =new QTimer();
-        timer->start(40);
-        connect(timer,SIGNAL(timeout()),this,SLOT(animar()));
-        scene = new QGraphicsScene();
-        scene->setSceneRect(0,0,1300,600);
-        ui->graphicsView->setScene(scene);
-        ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        ui->graphicsView->setFixedSize(1300,600);
-        l1=new QGraphicsLineItem(0,0,1300,0);
-        l2=new QGraphicsLineItem(1300,0,1300,600);
-        l3=new QGraphicsLineItem(0,600,1300,600);
-        l4=new QGraphicsLineItem(0,0,0,600);
-        l5=new QGraphicsLineItem(1300,0,1300,100);
-        scene->addItem(l1);
-        scene->addItem(l2);
-        scene->addItem(l3);
-        scene->addItem(l4);
-        scene->addItem(Muk);
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(80, 350);
         scene->addItem(r.last());
@@ -61,6 +61,7 @@ void Form::inicializacion()
         ene.last()->setpx1(90);
         ene.last()->setpx2(300);
         ene.last()->sett(0);
+        ene.last()->setvx(10);
         ene.last()->setvida(4);
         ene.append(new muk());
         ene.last()->setPos(135,85);
@@ -69,6 +70,7 @@ void Form::inicializacion()
         ene.last()->setpx1(20);
         ene.last()->setpx2(233);
         ene.last()->sett(1);
+        ene.last()->setvx(10);
         ene.last()->setvida(4);
         ene.append(new muk());
         ene.last()->setPos(625,155);
@@ -77,14 +79,52 @@ void Form::inicializacion()
         ene.last()->setpx1(520);
         ene.last()->setpx2(730);
         ene.last()->sett(1);
+        ene.last()->setvx(10);
         ene.last()->setvida(4);
         ene.append(new muk());
-        ene.last()->setPos(625,455);
+        ene.last()->setPos(1075,455);
         scene->addItem(ene.last());
         ene.last()->setpx(1075);
         ene.last()->setpx1(970);
         ene.last()->setpx2(1150);
         ene.last()->sett(0);
+        ene.last()->setvx(10);
+        ene.last()->setvida(4);
+    }
+    else if(nivel == 2)
+    {
+        jefe = 1;
+        Jefe = new muk();
+        Jefe->setPos(1200, 555);
+        Jefe->setvida(20);
+        scene->addItem(Jefe);
+        QFont f("PMingLiU-ExtB", 14);
+        ui->label_3->setText(QString("Vida jefe"));
+        ui->label_3->setFont(f);
+        ui->label_4->setNum(Jefe->getvida());
+        r.append(new QGraphicsRectItem(0,0,100,20));
+        r.last()->setPos(200, 250);
+        scene->addItem(r.last());
+        r.append(new QGraphicsRectItem(0,0,100,20));
+        r.last()->setPos(950, 250);
+        scene->addItem(r.last());
+        ene.append(new muk());
+        ene.last()->setPos(150,205);
+        scene->addItem(ene.last());
+        ene.last()->setpx(205);
+        ene.last()->setpx1(200);
+        ene.last()->setpx2(300);
+        ene.last()->sett(0);
+        ene.last()->setvx(10);
+        ene.last()->setvida(4);
+        ene.append(new muk());
+        ene.last()->setPos(1000,205);
+        scene->addItem(ene.last());
+        ene.last()->setpx(1000);
+        ene.last()->setpx1(950);
+        ene.last()->setpx2(1050);
+        ene.last()->sett(0);
+        ene.last()->setvx(10);
         ene.last()->setvida(4);
     }
 }
@@ -98,6 +138,7 @@ void Form::animar()
     teclas();
     moverbalas();
     moverenemigos();
+    moverjefe();
 }
 void Form::coliciones()
 {
@@ -105,7 +146,7 @@ void Form::coliciones()
     {
         if(Muk->collidingItems().size() < 2)
         {
-            if(Muk->collidesWithItem(l2) || Muk->collidesWithItem(l4)) b2 = 1, con2 = 22;
+            if((Muk->collidesWithItem(l2) || Muk->collidesWithItem(l4)) && con2 > 20) b2 = 1, con2 = 22;
             else b2 = 0;
         }
         else b2 = 0;
@@ -124,6 +165,7 @@ void Form::coliciones()
         }
         if(Muk->collidesWithItem(l3)) b2 = 0;
         if(Muk->collidesWithItem(l1)) b2 = 1, con2 = 22;
+        if(Muk->collidesWithItem(Jefe) && jefe != 0 && Muk->y() < 556 && con2 > 20) b2 =1;
 
     }
 }
@@ -168,16 +210,51 @@ void Form::moverenemigos()
     for(int i = 0; i<ene.length(); i++)
     {
         if(ene.at(i)->getpx() < ene.at(i)->getpx1() || ene.at(i)->getpx() > ene.at(i)->getpx2()) ene.at(i)->setd(-1);
-        ene.at(i)->mover();
+        ene.at(i)->mover(1);
         ene.at(i)->setPos(ene.at(i)->getpx(), ene.at(i)->y());
         if(con3 > 15)
         {
             if(ene.at(i)->getpx() < Muk->x()) agregarbala(ene.at(i), 1);
             else agregarbala(ene.at(i), -1);
+            bala.last()->getbaf()->setvx(ene.at(i)->getvx());
             bala.last()->getbaf()->seta(ene.at(i)->gett());
         }
     }
     if(con3 > 15) con3 = 0;
+}
+void Form::moverjefe()
+{
+    if(jefe == 1)
+    {
+        if(Muk->x() >= Jefe->x() && con4 == 0) con4 = 46;
+        else if(Muk->x() < Jefe->x() && con4 == 0) con4 = 26;
+        if(Muk->collidesWithItem(Jefe))
+        {
+            bt3 = 0, bt4 = 0;
+            if(b4 == 0) b4 = 1, Muk->setvida(Muk->getvida()-1), ui->label_2->setNum(Muk->getvida());
+        }
+        else b4 = 0;
+        if(con4 > 26 && !Jefe->collidesWithItem(l2))
+        {
+            if(con4 > 36)Jefe->setPos(Jefe->x()+8, Jefe->y()-7);
+            else Jefe->setPos(Jefe->x()+8, Jefe->y()+7);
+        }
+        else if(con4 > 2 && !Jefe->collidesWithItem(l4))
+        {
+            if(con4 > 14)Jefe->setPos(Jefe->x()-8, Jefe->y()-7);
+            else Jefe->setPos(Jefe->x()-8, Jefe->y()+7);
+        }
+        if(con4 == 27 || con4 == 3) con4 = 1;
+        if(Jefe->collidesWithItem(l4) || Jefe->collidesWithItem(l2))
+        {
+            if(!Jefe->collidesWithItem(l3)) Jefe->setPos(Jefe->x(), Jefe->y()+6), con4 = 2;
+            else if(con4 > 0) con4 = -30, a = 1;
+            else con4 += 2;
+        }
+        if(con4 == 1) a = 0;
+        if(Jefe->getvida() == 0) timer->stop();
+        con4--;
+    }
 }
 void Form::moverbalas()
 {
@@ -197,6 +274,13 @@ void Form::moverbalas()
                     {
                         ene.at(j)->setvida(ene.at(j)->getvida()-1);
                         if(ene.at(j)->getvida() < 1) scene->removeItem(ene.at(j)), ene.removeAt(j);
+                    }
+                }
+                if(a == 1)
+                {
+                    if(Jefe->collidesWithItem(bala.at(i)))
+                    {
+                        Jefe->setvida(Jefe->getvida()-1), ui->label_4->setNum(Jefe->getvida());
                     }
                 }
             }

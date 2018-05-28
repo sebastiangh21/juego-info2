@@ -3,7 +3,7 @@
 muk::muk(QGraphicsItem *carr):QGraphicsPixmapItem(carr)
 {
     setPixmap(QPixmap(":/playmove.png"));
-    vida = 0, d = 1, px = 0, px1 = 0, px2 = 0;
+    vida = 0, d = 1, px = 0, px1 = 0, px2 = 0, vx = 17;
     t = 0;
 }
 
@@ -55,7 +55,17 @@ bool muk::gett()
 {
     return t;
 }
-void muk::mover()
+void muk::mover(int a)
 {
-    px += (d*8);
+    if(a == 1) px += (d*8);
+}
+
+void muk::setvx(int a)
+{
+    vx = a;
+}
+
+int muk::getvx()
+{
+    return vx;
 }

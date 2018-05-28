@@ -11,7 +11,7 @@ class muk:public QObject,
 {
     Q_OBJECT
 private:
-    int vida, px, px1, px2, d;
+    int vida, px, px1, px2, d, vx;
     bool t;
 public:
     muk(QGraphicsItem *carr = 0);
@@ -26,7 +26,9 @@ public:
     void setd(int a);
     void sett(bool a);
     bool gett();
-    void mover();
+    void mover(int a);
+    void setvx(int a);
+    int getvx();
 };
 
 #endif // MUK_H
