@@ -42,7 +42,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Vida </string>
+    <string/>
    </property>
    <property name="textInteractionFlags">
     <set>Qt::NoTextInteraction</set>

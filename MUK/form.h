@@ -34,6 +34,8 @@ public:
     void moverjefe();
     void teclas();
     void coliciones();
+    void guardar();
+    void cargar();
     ~Form();
 
 private:
@@ -50,6 +52,7 @@ private:
     QGraphicsLineItem* l3;
     QGraphicsLineItem* l4;
     QGraphicsLineItem* l5;
+    int d = 1;
     bool a = 0;
     bool b = 0;
     bool b2 = 1;
@@ -61,7 +64,6 @@ private:
     bool bt4 = 0;
     bool bt5 = 0;
     short int nivel = 1;
-    short int d = 1;
     short int con = 0;
     short int con2 = 22;
     short int con3 = 0;

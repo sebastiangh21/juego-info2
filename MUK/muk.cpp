@@ -3,7 +3,7 @@
 muk::muk(QGraphicsItem *carr):QGraphicsPixmapItem(carr)
 {
     setPixmap(QPixmap(":/playmove.png"));
-    vida = 0, d = 1, px = 0, px1 = 0, px2 = 0, vx = 17;
+    vida = 0, d = 1, px = 0, px1 = 0, px2 = 0, vx = 17, cont = 0;
     t = 0;
 }
 
@@ -46,6 +46,11 @@ void muk::setd(int a)
     d *= a;
 }
 
+int muk::getd()
+{
+    return d;
+}
+
 void muk::sett(bool a)
 {
     t = a;
@@ -68,4 +73,70 @@ void muk::setvx(int a)
 int muk::getvx()
 {
     return vx;
+}
+void muk::movsapo(int b)
+{
+    if(b == 1)
+    {
+        if (cont<5)
+        {
+            setPixmap(QPixmap(":/sapo1.png"));
+        }
+        else if (cont >5)
+        {
+            setPixmap(QPixmap(":/sapo2.png"));
+        }
+        if (cont==10)cont=0;
+    }
+    else
+    {
+        if (cont<5)
+        {
+            setPixmap(QPixmap(":/sapo3.png"));
+        }
+        else if (cont >5)
+        {
+            setPixmap(QPixmap(":/sapo4.png"));
+        }
+        if (cont==10)cont=0;
+    }
+    cont++;
+
+}
+void muk::imagen(QString s)
+{
+    setPixmap(QPixmap(s));
+}
+void muk::movMuk(int b)
+{
+    if(b == 1)
+    {
+        if (cont<5 && cont > -1)
+        {
+            setPixmap(QPixmap(":/Muk3.png"));
+        }
+        else if (cont >= 5)
+        {
+            setPixmap(QPixmap(":/Muk4.png"));
+        }
+    }
+    else
+    {
+        if (cont<5)
+        {
+            setPixmap(QPixmap(":/Muk1.png"));
+        }
+        else if (cont >= 5)
+        {
+            setPixmap(QPixmap(":/Muk2.png"));
+        }
+    }
+    cont++;
+    if (cont==10)cont=0;
+}
+void muk::disMuk(int e)
+{
+    if(e == 1) setPixmap(QPixmap(":/MukDD.png"));
+    else setPixmap(QPixmap(":/MukDI.png"));
+    cont = -5;
 }

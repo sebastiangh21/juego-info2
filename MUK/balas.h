@@ -11,12 +11,12 @@ class balas:public QObject,
     Q_OBJECT
 private:
     balafisica *bala;
-    bool act;
+    int act;
 public:
     balas(QGraphicsItem *carr = 0);
     balafisica* getbaf();
-    void setact(bool a);
-    bool getact();
+    void setact(int a);
+    int getact();
     ~balas();
 };
 

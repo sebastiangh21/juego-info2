@@ -2,7 +2,7 @@
 
 balas::balas(QGraphicsItem* carr):QGraphicsPixmapItem(carr)
 {
-    setPixmap(QPixmap(":/playmove.png"));
+    setPixmap(QPixmap(":/balamuk.png"));
     bala = new balafisica;
     act = 0;
 }
@@ -12,12 +12,12 @@ balafisica *balas::getbaf()
     return bala;
 }
 
-void balas::setact(bool a)
+void balas::setact(int a)
 {
     act = a;
 }
 
-bool balas::getact()
+int balas::getact()
 {
     return act;
 }

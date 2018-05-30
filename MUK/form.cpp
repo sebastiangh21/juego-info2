@@ -2,6 +2,8 @@
 #include "ui_form.h"
 #include <QDebug>
 #include <QFont>
+#include <QFile>
+#include <QTextStream>
 
 Form::Form(QWidget *parent) :
     QWidget(parent),
@@ -12,50 +14,67 @@ Form::Form(QWidget *parent) :
 void Form::inicializacion()
 {
     Muk = new muk();
-    Muk->setPos(0, 540);
+    Muk->setPos(0, 550);
     Muk->setvida(15);
+    Muk->setvx(15);
     ui->label_2->setNum(15);
+    QPalette palette2 = ui->label_2->palette();
+    palette2.setColor(ui->label_2->foregroundRole(), Qt::white);
+    ui->label_2->setPalette(palette2);
     timer =new QTimer();
     timer->start(40);
     connect(timer,SIGNAL(timeout()),this,SLOT(animar()));
     scene = new QGraphicsScene();
-    scene->setSceneRect(0,0,1300,600);
+    scene->setSceneRect(0,0,1300,700);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->graphicsView->setFixedSize(1300,600);
+    ui->graphicsView->setFixedSize(1300,700);
+    scene->setBackgroundBrush(QBrush(QImage(":/fondo")));
     l1=new QGraphicsLineItem(0,0,1300,0);
     l2=new QGraphicsLineItem(1300,0,1300,600);
     l3=new QGraphicsLineItem(0,600,1300,600);
     l4=new QGraphicsLineItem(0,0,0,600);
     l5=new QGraphicsLineItem(1300,0,1300,100);
+    l3->setOpacity(0);
     scene->addItem(l1);
     scene->addItem(l2);
     scene->addItem(l3);
     scene->addItem(l4);
     scene->addItem(Muk);
+    QFont f("PMingLiU-ExtB", 15);
+    ui->label->setText(QString("Vida"));
+    QPalette palette = ui->label->palette();
+    palette.setColor(ui->label->foregroundRole(), Qt::white);
+    ui->label->setPalette(palette);
     if(nivel == 1)
     {
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(80, 350);
+        r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(500, 450);
+        r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(950, 500);
+        r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(500, 200);
+        r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,350,20));
         r.last()->setPos(950, 100);
+        r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(10, 130);
+        r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         ene.append(new muk());
-        ene.last()->setPos(205,305);
+        ene.last()->setPos(205,285);
         scene->addItem(ene.last());
         ene.last()->setpx(205);
         ene.last()->setpx1(90);
@@ -64,7 +83,7 @@ void Form::inicializacion()
         ene.last()->setvx(10);
         ene.last()->setvida(4);
         ene.append(new muk());
-        ene.last()->setPos(135,85);
+        ene.last()->setPos(135,65);
         scene->addItem(ene.last());
         ene.last()->setpx(135);
         ene.last()->setpx1(20);
@@ -73,7 +92,7 @@ void Form::inicializacion()
         ene.last()->setvx(10);
         ene.last()->setvida(4);
         ene.append(new muk());
-        ene.last()->setPos(625,155);
+        ene.last()->setPos(625,135);
         scene->addItem(ene.last());
         ene.last()->setpx(625);
         ene.last()->setpx1(520);
@@ -82,11 +101,11 @@ void Form::inicializacion()
         ene.last()->setvx(10);
         ene.last()->setvida(4);
         ene.append(new muk());
-        ene.last()->setPos(1075,455);
+        ene.last()->setPos(1075,435);
         scene->addItem(ene.last());
         ene.last()->setpx(1075);
         ene.last()->setpx1(970);
-        ene.last()->setpx2(1150);
+        ene.last()->setpx2(1170);
         ene.last()->sett(0);
         ene.last()->setvx(10);
         ene.last()->setvida(4);
@@ -95,21 +114,30 @@ void Form::inicializacion()
     {
         jefe = 1;
         Jefe = new muk();
+        Jefe->imagen(QString(":/sapo1.png"));
         Jefe->setPos(1200, 555);
         Jefe->setvida(20);
         scene->addItem(Jefe);
         QFont f("PMingLiU-ExtB", 14);
-        ui->label_3->setText(QString("Vida jefe"));
+        ui->label_3->setText(QString("Sapo jefe"));
         ui->label_3->setFont(f);
+        QPalette palette = ui->label_3->palette();
+        palette.setColor(ui->label_3->foregroundRole(), Qt::white);
+        ui->label_3->setPalette(palette);
         ui->label_4->setNum(Jefe->getvida());
+        QPalette palette2 = ui->label_4->palette();
+        palette2.setColor(ui->label_4->foregroundRole(), Qt::white);
+        ui->label_4->setPalette(palette2);
         r.append(new QGraphicsRectItem(0,0,100,20));
         r.last()->setPos(200, 250);
+        r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,100,20));
         r.last()->setPos(950, 250);
+        r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         ene.append(new muk());
-        ene.last()->setPos(150,205);
+        ene.last()->setPos(150,185);
         scene->addItem(ene.last());
         ene.last()->setpx(205);
         ene.last()->setpx1(200);
@@ -118,7 +146,7 @@ void Form::inicializacion()
         ene.last()->setvx(10);
         ene.last()->setvida(4);
         ene.append(new muk());
-        ene.last()->setPos(1000,205);
+        ene.last()->setPos(1000,185);
         scene->addItem(ene.last());
         ene.last()->setpx(1000);
         ene.last()->setpx1(950);
@@ -152,11 +180,17 @@ void Form::coliciones()
         else b2 = 0;
         if(b2 == 0)
         {
-            for(int i = 0; i < r.length(); i++)
+            for(int i = 0; i < r.size(); i++)
             {
-                if(r.at(i)->collidesWithItem(Muk))
+                if(Muk->collidesWithItem(r.at(i)))
                 {
-                    if(Muk->y() > r.at(i)->y()-40) bt3 = 0, bt4 = 0, b2 = 1, con2 = 22;
+                    if((Muk->pos().y()+35) > r.at(i)->pos().y())
+                    {
+                        bt3 = 0;
+                        bt4 = 0;
+                        b2 = 1;
+                        con2 = 22;
+                    }
                     else b2 = 0;
                     break;
                 }
@@ -165,18 +199,23 @@ void Form::coliciones()
         }
         if(Muk->collidesWithItem(l3)) b2 = 0;
         if(Muk->collidesWithItem(l1)) b2 = 1, con2 = 22;
-        if(Muk->collidesWithItem(Jefe) && jefe != 0 && Muk->y() < 556 && con2 > 20) b2 =1;
+        if(jefe != 0)
+        {
+            if(Muk->collidesWithItem(Jefe) && Muk->pos().y() < 545 && con2 > 20) b2 =1;
+        }
 
     }
 }
 void Form::teclas()
 {
+    Muk->movMuk(d);
     if(bt1 == 1 && b == 0)
     {
         b = 1;
         agregarbala(Muk, d);
         bala.last()->getbaf()->seta(1);//tiro rectilineo
         bala.last()->setact(1);
+        Muk->disMuk(d);
     }
     if(bt2 == 1 && b == 0)
     {
@@ -184,6 +223,7 @@ void Form::teclas()
         agregarbala(Muk, d);
         bala.last()->getbaf()->seta(0);//tiro parabolico
         bala.last()->setact(1);
+        Muk->disMuk(d);
     }
     if(bt3 == 1 && !Muk->collidesWithItem(l4)) Muk->setPos(Muk->x()-8, Muk->y());
     if(bt4 == 1 && !Muk->collidesWithItem(l2)) Muk->setPos(Muk->x()+8, Muk->y());
@@ -211,6 +251,7 @@ void Form::moverenemigos()
     {
         if(ene.at(i)->getpx() < ene.at(i)->getpx1() || ene.at(i)->getpx() > ene.at(i)->getpx2()) ene.at(i)->setd(-1);
         ene.at(i)->mover(1);
+        if(nivel == 1 || nivel == 2) ene.at(i)->movsapo(ene.at(i)->getd());
         ene.at(i)->setPos(ene.at(i)->getpx(), ene.at(i)->y());
         if(con3 > 15)
         {
@@ -294,8 +335,8 @@ void Form::moverbalas()
 void Form::agregarbala(muk *m, int di)
 {
     bala.append(new balas());
-    bala.last()->getbaf()->setx(m->x()+(di*20));
-    bala.last()->getbaf()->sety(m->y()-(20));
+    bala.last()->getbaf()->setx(m->x()+(di*50));
+    bala.last()->getbaf()->sety(m->y()-(40));
     bala.last()->getbaf()->setd(di);
     bala.last()->setPos(bala.last()->getbaf()->getx(), bala.last()->getbaf()->gety());
     scene->addItem(bala.last());
@@ -306,6 +347,8 @@ void Form::keyPressEvent(QKeyEvent *event){
     if(event->key()==Qt::Key_A) d = -1, bt3 = 1;
     if(event->key()==Qt::Key_D) d = 1, bt4 = 1;
     if(event->key()==Qt::Key_W && con2 > 22) con2 = 0;
+    if(event->key()==Qt::Key_G) guardar();
+    if(event->key()==Qt::Key_L) cargar();
 }
 void Form::keyReleaseEvent(QKeyEvent *event)
 {
@@ -327,4 +370,163 @@ Form::~Form()
     bala.clear();
     r.clear();
     ene.clear();
+}
+
+void Form::guardar()
+{
+    timer->stop();
+    QFile file("file.txt");
+    file.open(QIODevice::WriteOnly | QIODevice::Truncate  | QIODevice::Text);
+    QTextStream text(&file);
+    for(int j = 0; j < ene.size(); j++)
+    {
+        text<< ene.at(j)->getpx();
+        text<< " ";
+        text<< ene.at(j)->pos().y();
+        text<< " ";
+        text<< ene.at(j)->getpx1();
+        text<< " ";
+        text<< ene.at(j)->getpx2();
+        text<< " ";
+        text<< ene.at(j)->getvida();
+        text<< " ";
+        text<< ene.at(j)->getvx();
+        text<< " ";
+        text<< ene.at(j)->getd();
+        text<< " ";
+        text<< ene.at(j)->gett();
+        text<< " ";
+        text<< '\n';
+    }
+    text<<"# \n";
+    for(int i = 0; i < bala.length(); i++)
+    {
+        text<< bala.at(i)->pos().x();
+        text<< " ";
+        text<< bala.at(i)->pos().y();
+        text<< " ";
+        text<< bala.at(i)->getbaf()->getd();
+        text<< " ";
+        text<< bala.at(i)->getbaf()->getvy();
+        text<< " ";
+        text<< bala.at(i)->getbaf()->geta();
+        text<< " ";
+        text<< bala.at(i)->getact();
+        text<<" ";
+        text<< bala.at(i)->getbaf()->getvx();
+        text<<" ";
+        text<<'\n';
+    }
+    text<<"## \n";
+    text<<Muk->pos().x();
+    text<<" ";
+    text<<Muk->pos().y();
+    text<<" ";
+    text<<Muk->getvida();
+    text<<" ";
+    text<<d;
+    text<<" ";
+    text<<con2;
+    text<<" ";
+    text<<b2;
+    text<<" ";
+    text<<'\n';
+    text<<"### \n";
+    file.close();
+    timer->start(40);
+}
+
+void Form::cargar()
+{
+    timer->stop();
+    for(int i = 0; i<ene.size(); i++) scene->removeItem(ene.at(i));
+    ene.clear();
+    for(int i = 0; i<bala.size(); i++) scene->removeItem(bala.at(i));
+    bala.clear();
+    QString linea;
+    QFile file("file.txt");
+    file.open(QIODevice::ReadOnly);
+    linea = file.readLine();
+    while(linea != "# \r\n")
+    {
+        ene.append(new muk());
+        int n=0;
+        int n2 = 0;
+        while(n>=0){
+            n = linea.indexOf(" ");
+            if(n!=0){
+                if(n2 == 0) ene.last()->setpx(linea.left(n).toInt());
+                else if(n2 == 1) ene.last()->setPos(ene.last()->getpx(),linea.left(n).toInt());
+                else if(n2 == 2) ene.last()->setpx1(linea.left(n).toInt());
+                else if(n2 == 3) ene.last()->setpx2(linea.left(n).toInt());
+                else if(n2 == 4) ene.last()->setvida(linea.left(n).toInt());
+                else if(n2 == 5) ene.last()->setvx(linea.left(n).toInt());
+                else if(n2 == 6) ene.last()->setd(linea.left(n).toInt());
+                else if(n2 == 7) ene.last()->sett(linea.left(n).toInt()), scene->addItem(ene.last());
+                if(nivel == 1 || nivel == 2) ene.last()->movsapo(ene.last()->getd());
+                n2++;
+            }
+            if(linea.left(n) == "\r\n")
+            {
+                linea=linea.remove(0,n+1);
+                break;
+            }
+            linea=linea.remove(0,n+1);
+        }
+        linea = file.readLine();
+    }
+    linea = file.readLine();
+    while(linea != "## \r\n")
+    {
+        bala.append(new balas());
+        int n=0;
+        int n2 = 0;
+        while(n>=0){
+            n = linea.indexOf(" ");
+            if(n!=0){
+                if(n2 == 0) bala.last()->getbaf()->setx(linea.left(n).toInt());
+                else if(n2 == 1) bala.last()->getbaf()->sety(linea.left(n).toInt());
+                else if(n2 == 2) bala.last()->getbaf()->setd(linea.left(n).toInt());
+                else if(n2 == 3) bala.last()->getbaf()->setvy(linea.left(n).toInt());
+                else if(n2 == 4) bala.last()->getbaf()->seta(linea.left(n).toInt());
+                else if(n2 == 5) bala.last()->setact(linea.left(n).toInt());
+                else if(n2 == 6) bala.last()->getbaf()->setvx(linea.left(n).toInt()), scene->addItem(bala.last());
+                n2++;
+            }
+            if(linea.left(n) == "\r\n")
+            {
+                linea=linea.remove(0,n+1);
+                break;
+            }
+            linea=linea.remove(0,n+1);
+        }
+        linea = file.readLine();
+    }
+    linea = file.readLine();
+    while(linea != "### \r\n")
+    {
+        int n=0;
+        int n2 = 0;
+        while(n>=0){
+            n = linea.indexOf(" ");
+            if(n!=0){
+                if(n2 == 0) Muk->setpx(linea.left(n).toInt());
+                else if(n2 == 1) Muk->setPos(Muk->getpx(), linea.left(n).toInt());
+                else if(n2 == 2) Muk->setvida(linea.left(n).toInt());
+                else if(n2 == 3) d = linea.left(n).toInt();
+                else if(n2 == 4) con2 = linea.left(n).toInt();
+                else if(n2 == 5) b2 = linea.left(n).toInt();
+                n2++;
+            }
+            if(linea.left(n) == "\r\n")
+            {
+                linea=linea.remove(0,n+1);
+                break;
+            }
+            linea=linea.remove(0,n+1);
+        }
+        linea = file.readLine();
+    }
+    file.close();
+    timer->start(40);
 }
