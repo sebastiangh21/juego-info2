@@ -29,7 +29,7 @@ public:
     void moverbalas();
     void agregarbala(muk *m, int di);
     void inicializacion();
-    void getnivel(int n);
+    void setnivel(int n);
     void moverenemigos();
     void moverjefe();
     void teclas();

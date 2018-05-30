@@ -14,5 +14,6 @@
         <file>fondo.png</file>
         <file>barra.png</file>
         <file>balamuk.png</file>
+        <file>inicio.png</file>
     </qresource>
 </RCC>

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "principal.h"
+#include "controles.h"
 
 namespace Ui {
 class MainWindow;
@@ -16,11 +17,14 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_play_clicked();
+
+    void on_controles_clicked();
 
 private:
     Ui::MainWindow *ui;
     principal *a;
+    controles *c;
 };
 
 #endif // MAINWINDOW_H

@@ -156,7 +156,8 @@ void Form::inicializacion()
         ene.last()->setvida(4);
     }
 }
-void Form::getnivel(int n)
+
+void Form::setnivel(int n)
 {
     nivel = n;
 }
@@ -432,6 +433,21 @@ void Form::guardar()
     text<<" ";
     text<<'\n';
     text<<"### \n";
+    if(nivel == 2)
+    {
+        text<<Jefe->pos().x();
+        text<<" ";
+        text<<Jefe->pos().y();
+        text<<" ";
+        text<<Jefe->getvida();
+        text<<" ";
+        text<<con4;
+        text<<" ";
+        text<<a;
+        text<<" ";
+        text<<'\n';
+    }
+    text<<"#### \n";
     file.close();
     timer->start(40);
 }
@@ -527,6 +543,30 @@ void Form::cargar()
         }
         linea = file.readLine();
     }
+    while(linea != "#### \r\n")
+    {
+        int n=0;
+        int n2 = 0;
+        while(n>=0){
+            n = linea.indexOf(" ");
+            if(n!=0){
+                if(n2 == 0) Jefe->setpx(linea.left(n).toInt());
+                else if(n2 == 1) Jefe->setPos(Jefe->getpx(), linea.left(n).toInt());
+                else if(n2 == 2) Jefe->setvida(linea.left(n).toInt());
+                else if(n2 == 3) con4 = linea.left(n).toInt();
+                else if(n2 == 4) a = linea.left(n).toInt();
+                n2++;
+            }
+            if(linea.left(n) == "\r\n")
+            {
+                linea=linea.remove(0,n+1);
+                break;
+            }
+            linea=linea.remove(0,n+1);
+        }
+        linea = file.readLine();
+    }
+    linea = file.readLine();
     file.close();
     timer->start(40);
 }

@@ -30,7 +30,8 @@ SOURCES += \
     balas.cpp \
     muk.cpp \
     form.cpp \
-    principal.cpp
+    principal.cpp \
+    controles.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,12 +39,14 @@ HEADERS += \
     balas.h \
     muk.h \
     form.h \
-    principal.h
+    principal.h \
+    controles.h
 
 FORMS += \
         mainwindow.ui \
     form.ui \
-    principal.ui
+    principal.ui \
+    controles.ui
 
 RESOURCES += \
     resources.qrc

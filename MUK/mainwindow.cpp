@@ -13,8 +13,15 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_play_clicked()
 {
     a->show();
+    close();
+}
+
+void MainWindow::on_controles_clicked()
+{
+    c = new controles();
+    c->show();
     close();
 }
