@@ -15,6 +15,8 @@ class principal : public QWidget
 
 public:
     explicit principal(QWidget *parent = 0);
+    void setniveltotal(int n);
+    void setusu(QString u);
     ~principal();
 
 private slots:
@@ -37,7 +39,9 @@ private slots:
 private:
     Ui::principal *ui;
     Form *a;
+    QString usu;
     int nivel = 0;
+    int niveltotal = 0;
 };
 
 #endif // PRINCIPAL_H

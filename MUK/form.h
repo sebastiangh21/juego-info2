@@ -22,6 +22,7 @@ class Form : public QWidget
     Q_OBJECT
 public slots:
     void animar();
+    void final();
 public:
     explicit Form(QWidget *parent = 0);
     void keyPressEvent(QKeyEvent *event);
@@ -30,12 +31,14 @@ public:
     void agregarbala(muk *m, int di);
     void inicializacion();
     void setnivel(int n);
+    void setniveltotal(int n);
     void moverenemigos();
     void moverjefe();
     void teclas();
     void coliciones();
     void guardar();
     void cargar();
+    void setusuario(QString nom);
     ~Form();
 
 private:
@@ -45,6 +48,7 @@ private:
     QList<balas*> bala;
     muk* Muk;
     muk* Jefe;
+    QString usu;
     QList<QGraphicsRectItem*> r;
     QList<muk*> ene;
     QGraphicsLineItem* l1;
@@ -64,6 +68,7 @@ private:
     bool bt4 = 0;
     bool bt5 = 0;
     short int nivel = 1;
+    short int niveltotal = 1;
     short int con = 0;
     short int con2 = 22;
     short int con3 = 0;

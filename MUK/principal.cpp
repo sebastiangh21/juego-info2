@@ -10,6 +10,16 @@ principal::principal(QWidget *parent) :
     a = new Form();
 }
 
+void principal::setniveltotal(int n)
+{
+    niveltotal = n;
+}
+
+void principal::setusu(QString u)
+{
+    usu = u;
+}
+
 principal::~principal()
 {
     delete ui;
@@ -38,7 +48,8 @@ void principal::on_nivel2_clicked()
     ui->nivel4->setChecked(false);
     ui->nivel5->setChecked(false);
     ui->nivel6->setChecked(false);
-    nivel = 2;
+    if(niveltotal >= 2) nivel = 2;
+    else nivel = 0;
 }
 
 void principal::on_nivel3_clicked()
@@ -48,6 +59,8 @@ void principal::on_nivel3_clicked()
     ui->nivel4->setChecked(false);
     ui->nivel5->setChecked(false);
     ui->nivel6->setChecked(false);
+    if(niveltotal >= 3) nivel = 3;
+    else nivel = 0;
 }
 
 void principal::on_nivel4_clicked()
@@ -79,8 +92,13 @@ void principal::on_nivel6_clicked()
 
 void principal::on_jugar_clicked()
 {
-    a->setnivel(nivel);
-    a->inicializacion();
-    a->show();
-    close();
+    if(nivel != 0)
+    {
+        a->setnivel(nivel);
+        a->setniveltotal(niveltotal);
+        a->setusuario(usu);
+        a->inicializacion();
+        a->show();
+        close();
+    }
 }

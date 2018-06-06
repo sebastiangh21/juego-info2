@@ -1,5 +1,6 @@
 #include "form.h"
 #include "ui_form.h"
+#include "principal.h"
 #include <QDebug>
 #include <QFont>
 #include <QFile>
@@ -10,6 +11,8 @@ Form::Form(QWidget *parent) :
     ui(new Ui::Form)
 {
     ui->setupUi(this);
+    timer =new QTimer();
+    timer->start(40);
 }
 void Form::inicializacion()
 {
@@ -21,34 +24,27 @@ void Form::inicializacion()
     QPalette palette2 = ui->label_2->palette();
     palette2.setColor(ui->label_2->foregroundRole(), Qt::white);
     ui->label_2->setPalette(palette2);
-    timer =new QTimer();
-    timer->start(40);
     connect(timer,SIGNAL(timeout()),this,SLOT(animar()));
     scene = new QGraphicsScene();
-    scene->setSceneRect(0,0,1300,700);
-    ui->graphicsView->setScene(scene);
-    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->graphicsView->setFixedSize(1300,700);
-    scene->setBackgroundBrush(QBrush(QImage(":/fondo")));
-    l1=new QGraphicsLineItem(0,0,1300,0);
-    l2=new QGraphicsLineItem(1300,0,1300,600);
-    l3=new QGraphicsLineItem(0,600,1300,600);
-    l4=new QGraphicsLineItem(0,0,0,600);
-    l5=new QGraphicsLineItem(1300,0,1300,100);
-    l3->setOpacity(0);
-    scene->addItem(l1);
-    scene->addItem(l2);
-    scene->addItem(l3);
-    scene->addItem(l4);
-    scene->addItem(Muk);
     QFont f("PMingLiU-ExtB", 15);
     ui->label->setText(QString("Vida"));
+    ui->label->setFont(f);
     QPalette palette = ui->label->palette();
     palette.setColor(ui->label->foregroundRole(), Qt::white);
     ui->label->setPalette(palette);
     if(nivel == 1)
     {
+        scene->setSceneRect(0,0,2500,700);//1350 700
+        ui->graphicsView->setScene(scene);
+        ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        ui->graphicsView->setFixedSize(2500,700);
+        scene->setBackgroundBrush(QBrush(QImage(":/fondo")));
+        l1=new QGraphicsLineItem(0,0,2500,0);
+        l2=new QGraphicsLineItem(2500,0,2500,600);
+        l3=new QGraphicsLineItem(0,600,2500,600);
+        l4=new QGraphicsLineItem(0,0,0,2500);
+        l5=new QGraphicsLineItem(2500,0,2500,100);
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(80, 350);
         r.last()->setBrush(QBrush(":/barra"));
@@ -62,11 +58,11 @@ void Form::inicializacion()
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
-        r.last()->setPos(500, 200);
+        r.last()->setPos(500, 205);
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,350,20));
-        r.last()->setPos(950, 100);
+        r.last()->setPos(1000, 100);
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
@@ -92,7 +88,7 @@ void Form::inicializacion()
         ene.last()->setvx(10);
         ene.last()->setvida(4);
         ene.append(new muk());
-        ene.last()->setPos(625,135);
+        ene.last()->setPos(625,140);
         scene->addItem(ene.last());
         ene.last()->setpx(625);
         ene.last()->setpx1(520);
@@ -112,6 +108,17 @@ void Form::inicializacion()
     }
     else if(nivel == 2)
     {
+        scene->setSceneRect(0,0,2500,700);//1350 700
+        ui->graphicsView->setScene(scene);
+        ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        ui->graphicsView->setFixedSize(2500,700);
+        scene->setBackgroundBrush(QBrush(QImage(":/fondo")));
+        l1=new QGraphicsLineItem(0,0,2500,0);
+        l2=new QGraphicsLineItem(2500,0,2500,600);
+        l3=new QGraphicsLineItem(0,600,2500,600);
+        l4=new QGraphicsLineItem(0,0,0,2500);
+        l5=new QGraphicsLineItem(2500,0,2500,100);
         jefe = 1;
         Jefe = new muk();
         Jefe->imagen(QString(":/sapo1.png"));
@@ -155,11 +162,22 @@ void Form::inicializacion()
         ene.last()->setvx(10);
         ene.last()->setvida(4);
     }
+    l3->setOpacity(0);
+    scene->addItem(l1);
+    scene->addItem(l2);
+    scene->addItem(l3);
+    scene->addItem(l4);
+    scene->addItem(Muk);
 }
 
 void Form::setnivel(int n)
 {
     nivel = n;
+}
+
+void Form::setniveltotal(int n)
+{
+    niveltotal = n;
 }
 void Form::animar()
 {
@@ -228,6 +246,7 @@ void Form::teclas()
     }
     if(bt3 == 1 && !Muk->collidesWithItem(l4)) Muk->setPos(Muk->x()-8, Muk->y());
     if(bt4 == 1 && !Muk->collidesWithItem(l2)) Muk->setPos(Muk->x()+8, Muk->y());
+    if(Muk->x() > 400 && Muk->x() < 1540) scene->setSceneRect(Muk->x()-400,0,2500,700);
     if(con2 < 20 && b2 == 0)
     {
         Muk->setPos(Muk->x(), Muk->y()-8);
@@ -243,7 +262,23 @@ void Form::teclas()
         if(con2 > 100) con2 = 20;
         con2++;
     }
-    if(ene.length() < 1 &&  Muk->collidesWithItem(l5)) timer->stop();
+    if(ene.length() < 1 )//&&  Muk->collidesWithItem(l5))
+    {
+        timer->stop();
+        if(nivel >= niveltotal) niveltotal = nivel+1;
+        int t = niveltotal;
+        cargar();
+        connect(timer,SIGNAL(timeout()),this,SLOT(final()));
+        timer->start(1000);
+        niveltotal = t;
+        guardar();
+        QFont f("PMingLiU-ExtB", 20);
+        ui->label_5->setText(QString("Nivel Completo"));
+        ui->label_5->setFont(f);
+        QPalette palette = ui->label_5->palette();
+        palette.setColor(ui->label_5->foregroundRole(), Qt::white);
+        ui->label_5->setPalette(palette);
+    }
 }
 void Form::moverenemigos()
 {
@@ -376,9 +411,13 @@ Form::~Form()
 void Form::guardar()
 {
     timer->stop();
-    QFile file("file.txt");
+    QFile file(usu);
     file.open(QIODevice::WriteOnly | QIODevice::Truncate  | QIODevice::Text);
     QTextStream text(&file);
+    text<< niveltotal;
+    text<< "  \n";
+    text<< nivel;
+    text<< "  \n";
     for(int j = 0; j < ene.size(); j++)
     {
         text<< ene.at(j)->getpx();
@@ -455,13 +494,21 @@ void Form::guardar()
 void Form::cargar()
 {
     timer->stop();
+    QString linea;
+    QFile file(usu);
+    file.open(QIODevice::ReadOnly);
+    linea = file.readLine();
+    int n = 0;
+    n = linea.indexOf(" ");
+    niveltotal = linea.left(n).toInt();
+    linea = file.readLine();
+    n = linea.indexOf(" ");
+    nivel = linea.left(n).toInt();
+    inicializacion();
     for(int i = 0; i<ene.size(); i++) scene->removeItem(ene.at(i));
     ene.clear();
     for(int i = 0; i<bala.size(); i++) scene->removeItem(bala.at(i));
     bala.clear();
-    QString linea;
-    QFile file("file.txt");
-    file.open(QIODevice::ReadOnly);
     linea = file.readLine();
     while(linea != "# \r\n")
     {
@@ -528,7 +575,7 @@ void Form::cargar()
             if(n!=0){
                 if(n2 == 0) Muk->setpx(linea.left(n).toInt());
                 else if(n2 == 1) Muk->setPos(Muk->getpx(), linea.left(n).toInt());
-                else if(n2 == 2) Muk->setvida(linea.left(n).toInt());
+                else if(n2 == 2) Muk->setvida(linea.left(n).toInt()), ui->label_2->setNum(linea.left(n).toInt());
                 else if(n2 == 3) d = linea.left(n).toInt();
                 else if(n2 == 4) con2 = linea.left(n).toInt();
                 else if(n2 == 5) b2 = linea.left(n).toInt();
@@ -543,7 +590,8 @@ void Form::cargar()
         }
         linea = file.readLine();
     }
-    while(linea != "#### \r\n")
+    linea = file.readLine();
+   while(linea != "#### \r\n")
     {
         int n=0;
         int n2 = 0;
@@ -566,7 +614,19 @@ void Form::cargar()
         }
         linea = file.readLine();
     }
-    linea = file.readLine();
     file.close();
     timer->start(40);
+}
+
+void Form::setusuario(QString nom)
+{
+    usu = nom;
+}
+void Form::final()
+{
+    timer->stop();
+    principal *p = new principal();
+    p->setniveltotal(niveltotal);
+    p->show();
+    close();
 }

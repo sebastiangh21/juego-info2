@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -31,7 +31,9 @@ SOURCES += \
     muk.cpp \
     form.cpp \
     principal.cpp \
-    controles.cpp
+    controles.cpp \
+    login.cpp \
+    registro.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,13 +42,19 @@ HEADERS += \
     muk.h \
     form.h \
     principal.h \
-    controles.h
+    controles.h \
+    login.h \
+    registro.h
 
 FORMS += \
         mainwindow.ui \
     form.ui \
     principal.ui \
-    controles.ui
+    controles.ui \
+    login.ui \
+    registro.ui
 
 RESOURCES += \
     resources.qrc
+
+DISTFILES +=
