@@ -50,3 +50,13 @@ void MainWindow::on_cargar_clicked()
     f->show();
     close();
 }
+
+void MainWindow::on_multi_clicked()
+{
+    Form *f = new Form();
+    f->setnivel(7);
+    f->inicializacion();
+    f->setusuario(usu);
+    f->show();
+    close();
+}

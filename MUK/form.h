@@ -57,6 +57,7 @@ private:
     QGraphicsLineItem* l4;
     QGraphicsLineItem* l5;
     int d = 1;
+    int d2 = -1;
     bool a = 0;
     bool b = 0;
     bool b2 = 1;
@@ -67,12 +68,15 @@ private:
     bool bt3 = 0;
     bool bt4 = 0;
     bool bt5 = 0;
+    bool bt6 = 0;
+    bool bt7 = 0;
     short int nivel = 1;
     short int niveltotal = 1;
     short int con = 0;
     short int con2 = 22;
     short int con3 = 0;
     short int con4 = 0;
+    short int con5 = 22;
     short int jefe = 0;
 };
 

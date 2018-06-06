@@ -25,6 +25,8 @@ private slots:
 
     void on_cargar_clicked();
 
+    void on_multi_clicked();
+
 private:
     Ui::MainWindow *ui;
     principal *a;
