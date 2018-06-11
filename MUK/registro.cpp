@@ -43,13 +43,6 @@ void registro::on_pushButton_clicked()
     insertar_db.bindValue(":pass", contra);
     insertar_db.bindValue(":nick",nick);
     if(insertar_db.exec()){
-        Form *f = new Form();
-        f->setnivel(1);
-        f->inicializacion();
-        user += QString(".txt");
-        f->setusuario(user);
-        f->guardar();
-        f->close();
         QMessageBox::information(this,tr("Exito"),tr("Registro Exitoso"));
         close();
     }

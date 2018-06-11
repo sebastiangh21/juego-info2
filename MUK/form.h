@@ -39,6 +39,7 @@ public:
     void guardar();
     void cargar();
     void setusuario(QString nom);
+    void mensaje(QString men);
     ~Form();
 
 private:
@@ -63,6 +64,8 @@ private:
     bool b2 = 1;
     bool b3 = 0;
     bool b4 = 0;
+    bool b5 = 0;
+    bool b6 = 0;
     bool bt1 = 0;
     bool bt2 = 0;
     bool bt3 = 0;
@@ -70,13 +73,19 @@ private:
     bool bt5 = 0;
     bool bt6 = 0;
     bool bt7 = 0;
+    bool bt8 = 0;
+    bool bt9 = 0;
     short int nivel = 1;
     short int niveltotal = 1;
+    short int m = 8;
+    short int aj = 1;
     short int con = 0;
     short int con2 = 22;
     short int con3 = 0;
     short int con4 = 0;
     short int con5 = 22;
+    short int con6 = 0;
+    short int con7 = 0;
     short int jefe = 0;
 };
 

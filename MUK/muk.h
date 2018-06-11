@@ -11,8 +11,7 @@ class muk:public QObject,
 {
     Q_OBJECT
 private:
-    int vida, px, px1, px2, d, vx, cont;
-    bool t;
+    int vida, px, px1, px2, d, vx, cont, t;
 public:
     muk(QGraphicsItem *carr = 0);
     void setvida(int v);
@@ -25,8 +24,8 @@ public:
     int getpx2();
     void setd(int a);
     int getd();
-    void sett(bool a);
-    bool gett();
+    void sett(int a);
+    int gett();
     void mover(int a);
     void setvx(int a);
     void movsapo(int b);

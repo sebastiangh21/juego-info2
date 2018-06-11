@@ -21,14 +21,22 @@ MainWindow::~MainWindow()
 }
 void MainWindow::on_play_clicked()
 {
-    QString linea;
     QFile file(usu);
-    file.open(QIODevice::ReadOnly);
-    linea = file.readLine();
-    int n = 0;
-    n = linea.indexOf(" ");
-    a->setniveltotal(linea.left(n).toInt());
-    a->setusu(usu);
+    if(file.exists())
+    {
+        QString linea;
+        file.open(QIODevice::ReadOnly);
+        linea = file.readLine();
+        int n = 0;
+        n = linea.indexOf(" ");
+        a->setniveltotal(linea.left(n).toInt());
+        a->setusu(usu);
+    }
+    else
+    {
+        a->setniveltotal(1);
+        a->setusu(usu);
+    }
     file.close();
     a->show();
     close();
@@ -43,12 +51,17 @@ void MainWindow::on_controles_clicked()
 
 void MainWindow::on_cargar_clicked()
 {
-    Form *f = new Form();
-    f->inicializacion();
-    f->setusuario(usu);
-    f->cargar();
-    f->show();
-    close();
+    QFile file(usu);
+    if(file.exists())
+    {
+        Form *f = new Form();
+        f->inicializacion();
+        f->setusuario(usu);
+        f->cargar();
+        f->show();
+        close();
+    }
+    file.close();
 }
 
 void MainWindow::on_multi_clicked()

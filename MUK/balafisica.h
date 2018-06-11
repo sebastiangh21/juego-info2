@@ -5,23 +5,23 @@
 class balafisica
 {
 private:
-    int x, y, d, vy, ay, vx;
-    bool a;
+    float p, b, x, y, vx , d, vy, ay, a;
 public:
     balafisica();
     void mover();
-    int getx();
-    int gety();
-    void setx(int b);
-    void sety(int c);
-    void setd(int e);
-    int getd();
-    int getvy();
-    int getvx();
-    void seta(bool r);
+    float getx();
+    float gety();
+    void setx(float b);
+    void sety(float c);
+    void setd(float e);
+    float getd();
+    float getvy();
+    float getvx();
+    void seta(float r);
     bool geta();
-    void setvx(int a);
-    void setvy(int a);
+    void setvx(float a);
+    void setvy(float a);
+    void tiroa(float x1, float y1, float x2, float y2);
 };
 
 #endif // BALAFISICA_H

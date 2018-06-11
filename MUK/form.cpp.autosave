@@ -699,7 +699,7 @@ void Form::moverjefe()
     else if(jefe == 2)
     {
         if(con4 > 8) con4 = 0;
-        /*if(con4 == 0 && Muk->x() < 1200)
+        if(con4 == 0 && Muk->x() < 1200)
         {
             agregarbala(Jefe, -1);
             bala.last()->getbaf()->tiroa(Jefe->x(),Jefe->y(),Muk->x(),Muk->y());
@@ -714,7 +714,7 @@ void Form::moverjefe()
             bala.last()->setPos(bala.last()->getbaf()->getx(), bala.last()->getbaf()->gety());
             bala.last()->getbaf()->setvx(9);
             bala.last()->getbaf()->tiroa(Jefe->x()+30 ,Jefe->y()+70,Muk->x(),Muk->y());
-        }*/
+        }
         if(b4 == 0) Jefe->setPos(Jefe->x(), Jefe->y()-6);
         else Jefe->setPos(Jefe->x(), Jefe->y()+6);
         if(Jefe->y() < 80) b4 = 1;

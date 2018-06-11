@@ -51,12 +51,12 @@ int muk::getd()
     return d;
 }
 
-void muk::sett(bool a)
+void muk::sett(int a)
 {
     t = a;
 }
 
-bool muk::gett()
+int muk::gett()
 {
     return t;
 }
@@ -80,6 +80,7 @@ void muk::movsapo(int b)
     {
         if (cont<5)
         {
+
             setPixmap(QPixmap(":/sapo1.png"));
         }
         else if (cont >5)

@@ -33,7 +33,6 @@ void login::on_commandLinkButton_clicked()
     consulta.append("SELECT * FROM usuario where nick= '"+nick+"'");
     buscar.prepare(consulta);
     if(buscar.exec()){
-        qDebug() << "consulta realizada";
         while(buscar.next()){
             pass2=buscar.value(1).toByteArray().constData();
             nombre=buscar.value(0).toByteArray().constData();
@@ -54,10 +53,6 @@ void login::on_commandLinkButton_clicked()
         QMessageBox::critical(this,tr("ERROR"),tr("Contraseña ó Usuario incorrecto"));
 
     }
-
-
-
-
 
 }
 
