@@ -33,8 +33,6 @@ private slots:
 
     void on_nivel5_clicked();
 
-    void on_nivel6_clicked();
-
     void on_jugar_clicked();
 
 private:

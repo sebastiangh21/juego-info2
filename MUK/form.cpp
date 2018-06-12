@@ -15,11 +15,11 @@ Form::Form(QWidget *parent) :
 }
 void Form::inicializacion()
 {
-    Muk = new muk();
+    Muk = new muk();//se declara variable de personaje principal
     Muk->setPos(0, 550);
     Muk->setvida(15);
-    Muk->setvx(15);
-    timer =new QTimer();
+    Muk->setvx(15);//se la asigna vida
+    timer =new QTimer();// se declara el timer
     timer->start(40);
     ui->label_2->setNum(15);
     QPalette palette2 = ui->label_2->palette();
@@ -34,22 +34,22 @@ void Form::inicializacion()
     palette.setColor(ui->label->foregroundRole(), Qt::white);
     ui->label->setPalette(palette);
     int v, ve;
-    if(level == 1) v = 4, ve = 10;
+    if(level == 1) v = 4, ve = 10;//configurando dificultad
     else v = 6, ve = 12;
     if(nivel == 1)
     {
-        scene->setSceneRect(0,0,2500,700);//1350 700
+        scene->setSceneRect(0,0,2500,700);//se configura la scena
         ui->graphicsView->setScene(scene);
         ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         ui->graphicsView->setFixedSize(2500,700);
         scene->setBackgroundBrush(QBrush(QImage(":/fondo")));
-        l1=new QGraphicsLineItem(0,0,2500,0);
+        l1=new QGraphicsLineItem(0,0,2500,0);//rectas fronteras
         l2=new QGraphicsLineItem(2500,0,2500,600);
         l3=new QGraphicsLineItem(0,600,2500,600);
         l4=new QGraphicsLineItem(0,0,0,2500);
         l5=new QGraphicsLineItem(2500,0,2500,150);
-        r.append(new QGraphicsRectItem(0,0,250,20));
+        r.append(new QGraphicsRectItem(0,0,250,20));//barras de salto
         r.last()->setPos(80, 350);
         r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
@@ -73,7 +73,7 @@ void Form::inicializacion()
         r.last()->setPos(10, 130);
         r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
-        ene.append(new muk());
+        ene.append(new muk());//se declaran enemigos estables
         ene.last()->setPos(1125,185);
         scene->addItem(ene.last());
         ene.last()->setpx(1125);
@@ -118,7 +118,7 @@ void Form::inicializacion()
         ene.last()->sett(0);
         ene.last()->setvx(ve);
         ene.last()->setvida(v);
-        r.append(new QGraphicsRectItem(0,0,250,20));
+        r.append(new QGraphicsRectItem(0,0,250,20));//barras de salto
         r.last()->setPos(1380, 450);
         r.last()->setBrush(QBrush(":/rect.png"));
         scene->addItem(r.last());
@@ -139,7 +139,7 @@ void Form::inicializacion()
         r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
 
-        ene.append(new muk());
+        ene.append(new muk());//se declaran enemigos estables
         ene.last()->setPos(1500,385);
         scene->addItem(ene.last());
         ene.last()->setpx(1500);
@@ -181,19 +181,19 @@ void Form::inicializacion()
     }
     else if(nivel == 2)
     {
-        scene->setSceneRect(0,0,2500,700);//1350 700
+        scene->setSceneRect(0,0,2500,700);//se configura la scena
         ui->graphicsView->setScene(scene);
         ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         ui->graphicsView->setFixedSize(2500,700);
         scene->setBackgroundBrush(QBrush(QImage(":/fondo")));
-        l1=new QGraphicsLineItem(0,0,2500,0);
+        l1=new QGraphicsLineItem(0,0,2500,0);//rectas fronteras
         l2=new QGraphicsLineItem(2500,0,2500,600);
         l3=new QGraphicsLineItem(0,600,2500,600);
         l4=new QGraphicsLineItem(0,0,0,2500);
         l5=new QGraphicsLineItem(2500,0,2500,10);
         jefe = 1;
-        Jefe = new muk();
+        Jefe = new muk();//se declara Jefe
         Jefe->imagen(QString(":/sapo1.png"));
         Jefe->setPos(1200, 555);
         if(level == 1) Jefe->setvida(20);
@@ -222,7 +222,7 @@ void Form::inicializacion()
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
 
-        ene.append(new muk());
+        ene.append(new muk());//se declaran enemigos estables
         ene.last()->setPos(450,185);
         scene->addItem(ene.last());
         ene.last()->setpx(450);
@@ -232,7 +232,7 @@ void Form::inicializacion()
         ene.last()->setvx(ve);
         ene.last()->setvida(v);
 
-        ene.append(new muk());
+        ene.append(new muk());//se declaran enemigos estables
         ene.last()->setPos(1300,185);
         scene->addItem(ene.last());
         ene.last()->setpx(1300);
@@ -254,13 +254,13 @@ void Form::inicializacion()
     }
     else if(nivel == 3)
     {
-        scene->setSceneRect(0,0,2500,700);
+        scene->setSceneRect(0,0,2500,700);//se configura la scena
         ui->graphicsView->setScene(scene);
         ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         ui->graphicsView->setFixedSize(2500,700);
         scene->setBackgroundBrush(QBrush(QImage(":/fondo")));
-        l1=new QGraphicsLineItem(0,0,2500,0);
+        l1=new QGraphicsLineItem(0,0,2500,0);//rectas fronteras
         l2=new QGraphicsLineItem(2500,0,2500,600);
         l3=new QGraphicsLineItem(0,600,2500,600);
         l4=new QGraphicsLineItem(0,0,0,2500);
@@ -273,7 +273,7 @@ void Form::inicializacion()
         r.last()->setPos(300, 420);
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
-        ene.append(new muk());
+        ene.append(new muk());//se declaran enemigos estables
         ene.last()->setPos(425,375);
         ene.last()->imagen(QString(":/araña1.png"));
         scene->addItem(ene.last());
@@ -297,7 +297,7 @@ void Form::inicializacion()
         ene.last()->sett(0);
         ene.last()->setvx(ve);
         ene.last()->setvida(v);
-        r.append(new QGraphicsRectItem(0,0,250,20));
+        r.append(new QGraphicsRectItem(0,0,250,20));//barras de salto
         r.last()->setPos(720, 284);
         r.last()->setBrush(QBrush(":/barra.png"));
         scene->addItem(r.last());
@@ -308,7 +308,7 @@ void Form::inicializacion()
         r.append(new QGraphicsRectItem(0,0,20,60));
         r.last()->setPos(845, 360);
         r.last()->setBrush(QBrush(":/barra.png"));
-        scene->addItem(r.last());
+        scene->addItem(r.last());//se declaran enemigos estables
         ene.append(new muk());
         ene.last()->setPos(845,239);
         ene.last()->imagen(QString(":/araña1.png"));
@@ -414,64 +414,8 @@ void Form::inicializacion()
     }
     else if(nivel == 4)
     {
-        a = 1;
-        jefe = 2;
-        scene->setSceneRect(0,0,1350,700);//1350 700
-        ui->graphicsView->setScene(scene);
-        ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        ui->graphicsView->setFixedSize(1350,700);
-        scene->setBackgroundBrush(QBrush(QImage(":/fondo")));
-        l1=new QGraphicsLineItem(0,0,1350,0);
-        l2=new QGraphicsLineItem(1350,0,1350,600);
-        l3=new QGraphicsLineItem(0,600,1350,600);
-        l4=new QGraphicsLineItem(0,0,0,1350);
-        l5=new QGraphicsLineItem(1350,0,1350,100);
-        Jefe = new muk();
-        Jefe->imagen(QString(":/sapo1.png"));
-        Jefe->setPos(1270, 300);
-        if(level == 1) Jefe->setvida(20);
-        else Jefe->setvida(25);
-        scene->addItem(Jefe);
-        QFont f("PMingLiU-ExtB", 14);
-        ui->label_3->setText(QString("Araña jefe"));
-        ui->label_3->setFont(f);
-        QPalette palette = ui->label_3->palette();
-        palette.setColor(ui->label_3->foregroundRole(), Qt::white);
-        ui->label_3->setPalette(palette);
-        ui->label_4->setNum(Jefe->getvida());
-        QPalette palette2 = ui->label_4->palette();
-        palette2.setColor(ui->label_4->foregroundRole(), Qt::white);
-        ui->label_4->setPalette(palette2);
-        r.append(new QGraphicsRectItem(0,0,50,20));
-        r.last()->setPos(300, 500);
-        r.last()->setBrush(QBrush(":/barra"));
-        scene->addItem(r.last());
-        r.append(new QGraphicsRectItem(0,0,50,20));
-        r.last()->setPos(400, 395);
-        r.last()->setBrush(QBrush(":/barra"));
-        scene->addItem(r.last());
-        r.append(new QGraphicsRectItem(0,0,50,20));
-        r.last()->setPos(300, 300);
-        r.last()->setBrush(QBrush(":/barra"));
-        scene->addItem(r.last());
-        r.append(new QGraphicsRectItem(0,0,50,20));
-        r.last()->setPos(400, 195);
-        r.last()->setBrush(QBrush(":/barra"));
-        scene->addItem(r.last());
-        r.append(new QGraphicsRectItem(0,0,50,20));
-        r.last()->setPos(300, 100);
-        r.last()->setBrush(QBrush(":/barra"));
-        scene->addItem(r.last());
-        r.append(new QGraphicsRectItem(0,0,50,20));
-        r.last()->setPos(650, 300);
-        r.last()->setBrush(QBrush(":/barra"));
-        scene->addItem(r.last());
-    }
-    else if(nivel == 5)
-    {
         scene->setSceneRect(0,0,2500,700);
-        ui->graphicsView->setScene(scene);
+        ui->graphicsView->setScene(scene);//se configura la scena
         ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         ui->graphicsView->setFixedSize(2500,700);
@@ -485,7 +429,7 @@ void Form::inicializacion()
         r.last()->setPos(150, 300);
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
-        ene.append(new muk());
+        ene.append(new muk());//enemigos estables
         ene.last()->setPos(300,235);
         scene->addItem(ene.last());
         ene.last()->setpx(300);
@@ -586,7 +530,7 @@ void Form::inicializacion()
         ene.last()->setvx(9);
         ene.last()->setvida(v);
         r.append(new QGraphicsRectItem(0,0,200,20));
-        r.last()->setPos(2300, 500);
+        r.last()->setPos(2300, 500);//barras de salto
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         ene.append(new muk());
@@ -612,29 +556,29 @@ void Form::inicializacion()
         ene.last()->setvx(ve);
         ene.last()->setvida(v);
     }
-    else if(nivel == 6)
+    else if(nivel == 5)
     {
         a = 1;
-        jefe = 3;
-        scene->setSceneRect(0,0,1350,700);//1350 700
+        jefe = 2;
+        scene->setSceneRect(0,0,1350,700);//se confugura scena
         ui->graphicsView->setScene(scene);
         ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         ui->graphicsView->setFixedSize(1350,700);
         scene->setBackgroundBrush(QBrush(QImage(":/fondo")));
-        l1=new QGraphicsLineItem(0,0,1350,0);
+        l1=new QGraphicsLineItem(0,0,1350,0);//rectas limites
         l2=new QGraphicsLineItem(1350,0,1350,600);
         l3=new QGraphicsLineItem(0,600,1350,600);
         l4=new QGraphicsLineItem(0,0,0,1350);
         l5=new QGraphicsLineItem(1350,0,1350,100);
         Jefe = new muk();
-        Jefe->imagen(QString(":/sapo1.png"));
-        Jefe->setPos(1200, 530);
+        Jefe->imagen(QString(":/spiderman.png"));
+        Jefe->setPos(1270, 300);
         if(level == 1) Jefe->setvida(20);
         else Jefe->setvida(25);
         scene->addItem(Jefe);
         QFont f("PMingLiU-ExtB", 14);
-        ui->label_3->setText(QString("Caiman jefe"));
+        ui->label_3->setText(QString("Araña jefe"));
         ui->label_3->setFont(f);
         QPalette palette = ui->label_3->palette();
         palette.setColor(ui->label_3->foregroundRole(), Qt::white);
@@ -643,20 +587,35 @@ void Form::inicializacion()
         QPalette palette2 = ui->label_4->palette();
         palette2.setColor(ui->label_4->foregroundRole(), Qt::white);
         ui->label_4->setPalette(palette2);
-        r.append(new QGraphicsRectItem(0,0,200,20));
-        r.last()->setPos(550, 470);
+        r.append(new QGraphicsRectItem(0,0,50,20));
+        r.last()->setPos(300, 500);//barras de salto
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
-        piston = new QGraphicsRectItem(0,0,200,20);
-        piston->setPos(550, 100);
-        piston->setBrush(QBrush(":/barra"));
-        scene->addItem(piston);
-        r.append(piston);
+        r.append(new QGraphicsRectItem(0,0,50,20));
+        r.last()->setPos(400, 395);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        r.append(new QGraphicsRectItem(0,0,50,20));
+        r.last()->setPos(300, 300);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        r.append(new QGraphicsRectItem(0,0,50,20));
+        r.last()->setPos(400, 195);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        r.append(new QGraphicsRectItem(0,0,50,20));
+        r.last()->setPos(300, 100);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        r.append(new QGraphicsRectItem(0,0,50,20));
+        r.last()->setPos(650, 300);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
     }
     else if(nivel == 7)
     {
         a = 1;
-        scene->setSceneRect(0,0,1350,700);//1350 700
+        scene->setSceneRect(0,0,1350,700);//se configura la ecena
         ui->graphicsView->setScene(scene);
         ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -667,7 +626,7 @@ void Form::inicializacion()
         l3=new QGraphicsLineItem(0,600,1350,600);
         l4=new QGraphicsLineItem(0,0,0,1350);
         l5=new QGraphicsLineItem(1350,0,1350,100);
-        r.append(new QGraphicsRectItem(0,0,200,20));
+        r.append(new QGraphicsRectItem(0,0,200,20));//barras de salto
         r.last()->setPos(200, 470);
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
@@ -688,7 +647,7 @@ void Form::inicializacion()
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         jefe = 4;
-        Jefe = new muk();
+        Jefe = new muk();//se declara jugador 2
         Jefe->imagen(QString(":/sapo1.png"));
         Jefe->setPos(1200, 550);
         Jefe->setvida(15);
@@ -731,7 +690,7 @@ void Form::animar()
     moverenemigos();
     moverjefe();
 }
-void Form::coliciones()
+void Form::coliciones()//se verifica las coliciones por las cuales el personaja baja o se queda estable en la scena
 {
     if(!Muk->collidingItems().empty())
     {
@@ -773,7 +732,7 @@ void Form::coliciones()
     }
     else if(con2 == 0) con2 = 22;
 }
-void Form::teclas()
+void Form::teclas()//se realiza acciones con las teclas seleccionadas
 {
     Muk->movMuk(d);
     if(bt1 == 1 && b == 0)
@@ -794,7 +753,7 @@ void Form::teclas()
     }
     if(bt3 == 1 && !Muk->collidesWithItem(l4)) Muk->setPos(Muk->x()-m, Muk->y());
     if(bt4 == 1 && !Muk->collidesWithItem(l2)) Muk->setPos(Muk->x()+m, Muk->y());
-    if(nivel != 7 && nivel != 4 && nivel != 6)if(Muk->x() > 600 && Muk->x() < 1740) scene->setSceneRect(Muk->x()-600,0,scene->width(), scene->height());
+    if(nivel != 7 && nivel != 5)if(Muk->x() > 600 && Muk->x() < 1740) scene->setSceneRect(Muk->x()-600,0,scene->width(), scene->height());
     if(con2 < 20 && b2 == 0)
     {
         Muk->setPos(Muk->x(), Muk->y()-8);
@@ -816,7 +775,7 @@ void Form::teclas()
         mensaje(QString("Nivel Completo"));
     }
 }
-void Form::moverenemigos()
+void Form::moverenemigos()//se mueven y se agregan balas
 {
     con3++;
     for(int i = 0; i<ene.length(); i++)
@@ -824,8 +783,8 @@ void Form::moverenemigos()
         if(ene.at(i)->getpx() < ene.at(i)->getpx1() || ene.at(i)->getpx() > ene.at(i)->getpx2()) ene.at(i)->setd(-1);
         ene.at(i)->mover(1);
         if(nivel == 1 || nivel == 2) ene.at(i)->movsapo(ene.at(i)->getd());
-        else if(nivel == 3 || nivel == 4) ene.at(i)->movara(ene.at(i)->getd());
-        else if(nivel == 5)
+        else if(nivel == 3 || nivel == 5) ene.at(i)->movara(ene.at(i)->getd());
+        else if(nivel == 4)
         {
             if(ene.at(i)->gett() == 1) ene.at(i)->movsapo(ene.at(i)->getd());
             else ene.at(i)->movara(ene.at(i)->getd());
@@ -840,7 +799,8 @@ void Form::moverenemigos()
                 bala.last()->getbaf()->setvx(ene.at(i)->getvx());
                 bala.last()->getbaf()->seta(ene.at(i)->gett());
                 if(nivel == 1 || nivel == 2) bala.last()->balasapo();
-                if(nivel == 3) bala.last()->setact(2);
+                if(nivel == 3) bala.last()->setact(2), bala.last()->balasapo();
+                if(nivel == 4) bala.last()->balasapo();
             }
             else if(ene.at(i)->gett() == 0 && Muk->x() < ene.at(i)->x()+500 && Muk->x() > ene.at(i)->x()-500)
             {
@@ -849,14 +809,14 @@ void Form::moverenemigos()
                 bala.last()->getbaf()->setvx(ene.at(i)->getvx());
                 bala.last()->getbaf()->seta(ene.at(i)->gett());
                 if(nivel == 1 || nivel == 2) bala.last()->balasapo();
-                if(nivel == 3) bala.last()->setact(2);
-                else if(nivel == 5 && ene.at(i)->gett() == 0) bala.last()->setact(2);
+                if(nivel == 3) bala.last()->setact(2), bala.last()->balasapo();
+                else if(nivel == 4 && ene.at(i)->gett() == 0) bala.last()->setact(2), bala.last()->balasapo();
             }
         }
     }
     if(con3 > 15) con3 = 0;
 }
-void Form::moverjefe()
+void Form::moverjefe()//funcion que contiene los jefes y sus acciones
 {
     if(jefe == 1)
     {
@@ -906,6 +866,7 @@ void Form::moverjefe()
             bala.last()->getbaf()->seta(2);
             bala.last()->setact(2);
             bala.last()->getbaf()->setvx(11);
+            bala.last()->balasapo();
         }
         if(Muk->x() > 1000 && con4 == 0 && Muk->x() < 1200)
         {
@@ -923,65 +884,10 @@ void Form::moverjefe()
         {
             timer->stop();
             if(nivel >= niveltotal) niveltotal = nivel+1;
-            mensaje(QString("Nivel Completo"));
+            mensaje(QString("FIN"));
         }
         con4++;
         aj = 1;
-    }
-    else if(jefe == 3)
-    {
-        if(Muk->x() > 500 && Muk->x() < 760 && Muk->y() < 470)
-        {
-            int d = 0;
-            if(Jefe->x() > 625 && Jefe->y() == 530) d = 8, Jefe->setPos(Jefe->x()+d, Jefe->y());
-            else if(Jefe->y() == 530) d = -8, Jefe->setPos(Jefe->x()+d, Jefe->y());
-            if(Jefe->x() > 500 && Jefe->x() < 720 && Jefe->y() < 470)
-            {
-                d = 1;
-                if(Jefe->x() > 625 && Jefe->y() < 410) Jefe->setPos(Jefe->x()-8, Jefe->y()+10);
-                else if(Jefe->y() < 410)Jefe->setPos(Jefe->x()+8, Jefe->y()+10);
-                if(Jefe->collidesWithItem(r.at(0))) Jefe->setPos(Jefe->x(),r.at(0)->y()-60);
-                if(Muk->x() >= Jefe->x() && con4 == 0) con4 = 2;
-                else if(Muk->x() < Jefe->x() && con4 == 0) con4 = 0;
-                if(con4 > 1) Jefe->setPos(Jefe->x()-8, Jefe->y());
-                else Jefe->setPos(Jefe->x()+8, Jefe->y());
-                if(con4 == 4 || con4 == 1) con4 = 0;
-                con4++;
-            }
-            if(Jefe->x() > 850 || (Jefe->x() > 625 && d == 0))
-            {
-                Jefe->setPos(Jefe->x()-8, Jefe->y()-10);
-            }
-            else if(Jefe->x() < 390 || (Jefe->x() < 625 && d == 0))
-            {
-                Jefe->setPos(Jefe->x()+8, Jefe->y()-10);
-            }
-        }
-        else if(Jefe->y() < 530) Jefe->setPos(Jefe->x(),Jefe->y()+8), con4 = 0;
-        else
-        {
-            if(Muk->x() >= Jefe->x() && con4 == 0) con4 = 40;
-            else if(Muk->x() < Jefe->x() && con4 == 0) con4 = 1;
-            if(Muk->collidesWithItem(Jefe))
-            {
-                bt3 = 0, bt4 = 0;
-                Muk->setvida(Muk->getvida()-1), ui->label_2->setNum(Muk->getvida());
-            }
-            if(con4 > 39 && !Jefe->collidesWithItem(l2))
-            {
-                Jefe->setPos(Jefe->x()+8, Jefe->y());
-            }
-            else if(con4 > 0 && !Jefe->collidesWithItem(l4))
-            {
-                Jefe->setPos(Jefe->x()-8, Jefe->y());
-            }
-            if(con4 == 80 || con4 == 39) con4 = -1;
-            con4++;
-      }
-        if(piston->y() < 400 && b4 == 0) piston->setPos(piston->x(), piston->y()+6);
-        else b4 = 1;
-        if(piston->y() > 80 && b4 == 1) piston->setPos(piston->x(), piston->y()-6);
-        else b4 = 0;
     }
     else if(jefe == 4)
     {
@@ -1054,7 +960,7 @@ void Form::moverjefe()
         }
     }
 }
-void Form::moverbalas()
+void Form::moverbalas()//se mueven balas sus coliciones y cuando se le quita vida a los miembros de la scena
 {
     QList<int> l;
     bool e;
@@ -1116,7 +1022,7 @@ void Form::moverbalas()
         l.removeLast();
     }
 }
-void Form::agregarbala(muk *m, int di)
+void Form::agregarbala(muk *m, int di)//se agrega bala
 {
     bala.append(new balas());
     bala.last()->getbaf()->setx(m->x()+(di*60));
@@ -1165,7 +1071,7 @@ Form::~Form()
     ene.clear();
 }
 
-void Form::guardar()
+void Form::guardar()//se escribe en un archivo de texto los avances del usuario
 {
    if(nivel != 7)
    {
@@ -1216,13 +1122,10 @@ void Form::guardar()
            text<<" ";
            text<< bala.at(i)->getbaf()->getvx();
            text<<" ";
-           if(nivel == 4)
-           {
-               text<< bala.at(i)->getbaf()->getb();
-               text<<" ";
-               text<< bala.at(i)->getbaf()->getp();
-               text<<" ";
-           }
+           text<< bala.at(i)->getbaf()->getb();
+           text<<" ";
+           text<< bala.at(i)->getbaf()->getp();
+           text<<" ";
            text<<'\n';
        }
        text<<"## \n";
@@ -1260,7 +1163,7 @@ void Form::guardar()
    }
 }
 
-void Form::cargar()
+void Form::cargar()//se carga los progresos de un usuario
 {
     timer->stop();
     QFile file(usu);
@@ -1328,12 +1231,9 @@ void Form::cargar()
                     else if(n2 == 3) bala.last()->getbaf()->setvy(linea.left(n).toInt());
                     else if(n2 == 4) bala.last()->getbaf()->seta(linea.left(n).toInt());
                     else if(n2 == 5) bala.last()->setact(linea.left(n).toInt());
-                    else if(n2 == 6) bala.last()->getbaf()->setvx(linea.left(n).toInt()), scene->addItem(bala.last());
-                    if(nivel == 4)
-                    {
-                        if(n2 == 7) bala.last()->getbaf()->setb(linea.left(n).toInt());
-                        if(n2 == 8) bala.last()->getbaf()->setp(linea.left(n).toInt());
-                    }
+                    else if(n2 == 6) bala.last()->getbaf()->setvx(linea.left(n).toInt());
+                    else if(n2 == 7) bala.last()->getbaf()->setb(linea.left(n).toInt());
+                    else if(n2 == 8) bala.last()->getbaf()->setp(linea.left(n).toInt()), scene->addItem(bala.last());
                     n2++;
                 }
                 if(linea.left(n) == "\r\n")

@@ -1,13 +1,11 @@
 <RCC>
     <qresource prefix="/">
-        <file>playmove.png</file>
         <file>MukDD.png</file>
         <file>MukDI.png</file>
         <file>Muk1.png</file>
         <file>Muk3.png</file>
         <file>Muk2.png</file>
         <file>Muk4.png</file>
-        <file>fondo.png</file>
         <file>barra.png</file>
         <file>balamuk.png</file>
         <file>inicio.png</file>
@@ -31,5 +29,7 @@
         <file>sapoj3.png</file>
         <file>sapoj4.png</file>
         <file>rect.png</file>
+        <file>spiderman.png</file>
+        <file>fondo.png</file>
     </qresource>
 </RCC>
