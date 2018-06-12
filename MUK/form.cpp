@@ -33,6 +33,9 @@ void Form::inicializacion()
     QPalette palette = ui->label->palette();
     palette.setColor(ui->label->foregroundRole(), Qt::white);
     ui->label->setPalette(palette);
+    int v, ve;
+    if(level == 1) v = 4, ve = 10;
+    else v = 6, ve = 12;
     if(nivel == 1)
     {
         scene->setSceneRect(0,0,2500,700);//1350 700
@@ -48,27 +51,27 @@ void Form::inicializacion()
         l5=new QGraphicsLineItem(2500,0,2500,150);
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(80, 350);
-        r.last()->setBrush(QBrush(":/barra"));
+        r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(500, 450);
-        r.last()->setBrush(QBrush(":/barra"));
+        r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(950, 500);
-        r.last()->setBrush(QBrush(":/barra"));
+        r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(500, 205);
-        r.last()->setBrush(QBrush(":/barra"));
+        r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(1000, 250);
-        r.last()->setBrush(QBrush(":/barra"));
+        r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(10, 130);
-        r.last()->setBrush(QBrush(":/barra"));
+        r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
         ene.append(new muk());
         ene.last()->setPos(1125,185);
@@ -77,8 +80,8 @@ void Form::inicializacion()
         ene.last()->setpx1(1010);
         ene.last()->setpx2(1230);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         ene.append(new muk());
         ene.last()->setPos(205,285);
         scene->addItem(ene.last());
@@ -86,8 +89,8 @@ void Form::inicializacion()
         ene.last()->setpx1(90);
         ene.last()->setpx2(300);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         ene.append(new muk());
         ene.last()->setPos(135,65);
         scene->addItem(ene.last());
@@ -95,8 +98,8 @@ void Form::inicializacion()
         ene.last()->setpx1(20);
         ene.last()->setpx2(233);
         ene.last()->sett(1);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         ene.append(new muk());
         ene.last()->setPos(625,140);
         scene->addItem(ene.last());
@@ -104,8 +107,8 @@ void Form::inicializacion()
         ene.last()->setpx1(520);
         ene.last()->setpx2(730);
         ene.last()->sett(1);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         ene.append(new muk());
         ene.last()->setPos(1075,435);
         scene->addItem(ene.last());
@@ -113,27 +116,27 @@ void Form::inicializacion()
         ene.last()->setpx1(970);
         ene.last()->setpx2(1170);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(1380, 450);
-        r.last()->setBrush(QBrush(":/barra"));
+        r.last()->setBrush(QBrush(":/rect.png"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(1800, 255);
-        r.last()->setBrush(QBrush(":/barra"));
+        r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(2200, 350);
-        r.last()->setBrush(QBrush(":/barra"));
+        r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(1380, 200);
-        r.last()->setBrush(QBrush(":/barra"));
+        r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(2250, 150);
-        r.last()->setBrush(QBrush(":/barra"));
+        r.last()->setBrush(QBrush(":/rect"));
         scene->addItem(r.last());
 
         ene.append(new muk());
@@ -143,8 +146,8 @@ void Form::inicializacion()
         ene.last()->setpx1(1380);
         ene.last()->setpx2(1590);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
 
         ene.append(new muk());
         ene.last()->setPos(1925,190);
@@ -153,8 +156,8 @@ void Form::inicializacion()
         ene.last()->setpx1(1810);
         ene.last()->setpx2(2010);
         ene.last()->sett(1);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
 
         ene.append(new muk());
         ene.last()->setPos(2375,285);
@@ -163,8 +166,8 @@ void Form::inicializacion()
         ene.last()->setpx1(2180);
         ene.last()->setpx2(2430);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
 
         ene.append(new muk());
         ene.last()->setPos(1505,135);
@@ -173,8 +176,8 @@ void Form::inicializacion()
         ene.last()->setpx1(1390);
         ene.last()->setpx2(1590);
         ene.last()->sett(1);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
     }
     else if(nivel == 2)
     {
@@ -193,7 +196,8 @@ void Form::inicializacion()
         Jefe = new muk();
         Jefe->imagen(QString(":/sapo1.png"));
         Jefe->setPos(1200, 555);
-        Jefe->setvida(20);
+        if(level == 1) Jefe->setvida(20);
+        else Jefe->setvida(25);
         scene->addItem(Jefe);
         QFont f("PMingLiU-ExtB", 14);
         ui->label_3->setText(QString("Sapo jefe"));
@@ -225,8 +229,8 @@ void Form::inicializacion()
         ene.last()->setpx1(400);
         ene.last()->setpx2(450);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
 
         ene.append(new muk());
         ene.last()->setPos(1300,185);
@@ -235,8 +239,8 @@ void Form::inicializacion()
         ene.last()->setpx1(1220);
         ene.last()->setpx2(1330);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
 
         ene.append(new muk());
         ene.last()->setPos(2150,185);
@@ -245,8 +249,8 @@ void Form::inicializacion()
         ene.last()->setpx1(2100);
         ene.last()->setpx2(2150);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
     }
     else if(nivel == 3)
     {
@@ -270,29 +274,29 @@ void Form::inicializacion()
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         ene.append(new muk());
-        ene.last()->setPos(425,355);
-        ene.last()->imagen(QString(":/sapo1.png"));
+        ene.last()->setPos(425,375);
+        ene.last()->imagen(QString(":/araña1.png"));
         scene->addItem(ene.last());
         ene.last()->setpx(425);
         ene.last()->setpx1(300);
         ene.last()->setpx2(510);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(300, 164);
         r.last()->setBrush(QBrush(":/barra.png"));
         scene->addItem(r.last());
         ene.append(new muk());
-        ene.last()->setPos(425,99);
-        ene.last()->imagen(QString(":/sapo1.png"));
+        ene.last()->setPos(425,119);
+        ene.last()->imagen(QString(":/araña1.png"));
         scene->addItem(ene.last());
         ene.last()->setpx(425);
         ene.last()->setpx1(300);
         ene.last()->setpx2(510);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(720, 284);
         r.last()->setBrush(QBrush(":/barra.png"));
@@ -306,43 +310,43 @@ void Form::inicializacion()
         r.last()->setBrush(QBrush(":/barra.png"));
         scene->addItem(r.last());
         ene.append(new muk());
-        ene.last()->setPos(845,219);
-        ene.last()->imagen(QString(":/sapo1.png"));
+        ene.last()->setPos(845,239);
+        ene.last()->imagen(QString(":/araña1.png"));
         scene->addItem(ene.last());
         ene.last()->setpx(845);
         ene.last()->setpx1(720);
         ene.last()->setpx2(930);
         ene.last()->sett(1);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(1120, 420);
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         ene.append(new muk());
-        ene.last()->setPos(1245,355);
-        ene.last()->imagen(QString(":/sapo1.png"));
+        ene.last()->setPos(1245,375);
+        ene.last()->imagen(QString(":/araña1.png"));
         scene->addItem(ene.last());
         ene.last()->setpx(1245);
         ene.last()->setpx1(1120);
         ene.last()->setpx2(1330);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(1120, 164);
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         ene.append(new muk());
-        ene.last()->setPos(1245,99);
-        ene.last()->imagen(QString(":/sapo1.png"));
+        ene.last()->setPos(1245,119);
+        ene.last()->imagen(QString(":/araña1.png"));
         scene->addItem(ene.last());
         ene.last()->setpx(1245);
         ene.last()->setpx1(1120);
         ene.last()->setpx2(1330);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(1520, 284);
         r.last()->setBrush(QBrush(":/barra"));
@@ -356,27 +360,27 @@ void Form::inicializacion()
         r.last()->setBrush(QBrush(":/barra.png"));
         scene->addItem(r.last());
         ene.append(new muk());
-        ene.last()->setPos(1665,219);
-        ene.last()->imagen(QString(":/sapo1.png"));
+        ene.last()->setPos(1665,239);
+        ene.last()->imagen(QString(":/araña1.png"));
         scene->addItem(ene.last());
         ene.last()->setpx(1665);
         ene.last()->setpx1(1510);
         ene.last()->setpx2(1720);
         ene.last()->sett(1);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         r.append(new QGraphicsRectItem(0,0,250,20));
         r.last()->setPos(1940, 420);
         ene.append(new muk());
-        ene.last()->setPos(2065,355);
-        ene.last()->imagen(QString(":/sapo1.png"));
+        ene.last()->setPos(2065,375);
+        ene.last()->imagen(QString(":/araña1.png"));
         scene->addItem(ene.last());
         ene.last()->setpx(2065);
         ene.last()->setpx1(1940);
         ene.last()->setpx2(2150);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         r.append(new QGraphicsRectItem(0,0,250,20));
@@ -384,29 +388,29 @@ void Form::inicializacion()
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         ene.append(new muk());
-        ene.last()->setPos(2065,99);
-        ene.last()->imagen(QString(":/sapo1.png"));
+        ene.last()->setPos(2065,119);
+        ene.last()->imagen(QString(":/araña1.png"));
         scene->addItem(ene.last());
         ene.last()->setpx(2065);
         ene.last()->setpx1(1940);
         ene.last()->setpx2(2150);
         ene.last()->sett(0);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
         r.append(new QGraphicsRectItem(0,0,150,20));
         r.last()->setPos(2340, 170);
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
         ene.append(new muk());
-        ene.last()->setPos(2440,105);
-        ene.last()->imagen(QString(":/sapo1.png"));
+        ene.last()->setPos(2440,125);
+        ene.last()->imagen(QString(":/araña1.png"));
         scene->addItem(ene.last());
         ene.last()->setpx(2440);
         ene.last()->setpx1(2340);
         ene.last()->setpx2(2440);
         ene.last()->sett(1);
-        ene.last()->setvx(10);
-        ene.last()->setvida(4);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
     }
     else if(nivel == 4)
     {
@@ -426,7 +430,8 @@ void Form::inicializacion()
         Jefe = new muk();
         Jefe->imagen(QString(":/sapo1.png"));
         Jefe->setPos(1270, 300);
-        Jefe->setvida(25);
+        if(level == 1) Jefe->setvida(20);
+        else Jefe->setvida(25);
         scene->addItem(Jefe);
         QFont f("PMingLiU-ExtB", 14);
         ui->label_3->setText(QString("Araña jefe"));
@@ -462,6 +467,191 @@ void Form::inicializacion()
         r.last()->setPos(650, 300);
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
+    }
+    else if(nivel == 5)
+    {
+        scene->setSceneRect(0,0,2500,700);
+        ui->graphicsView->setScene(scene);
+        ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        ui->graphicsView->setFixedSize(2500,700);
+        scene->setBackgroundBrush(QBrush(QImage(":/fondo")));
+        l1=new QGraphicsLineItem(0,0,2500,0);
+        l2=new QGraphicsLineItem(2500,0,2500,600);
+        l3=new QGraphicsLineItem(0,600,2500,600);
+        l4=new QGraphicsLineItem(0,0,0,2500);
+        l5=new QGraphicsLineItem(2500,0,2500,150);
+        r.append(new QGraphicsRectItem(0,0,300,20));
+        r.last()->setPos(150, 300);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        ene.append(new muk());
+        ene.last()->setPos(300,235);
+        scene->addItem(ene.last());
+        ene.last()->setpx(300);
+        ene.last()->setpx1(150);
+        ene.last()->setpx2(410);
+        ene.last()->sett(1);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
+        r.append(new QGraphicsRectItem(0,0,100,20));
+        r.last()->setPos(0, 100);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        ene.append(new muk());
+        ene.last()->setPos(50,35);
+        scene->addItem(ene.last());
+        ene.last()->setpx(50);
+        ene.last()->setpx1(5);
+        ene.last()->setpx2(60);
+        ene.last()->sett(1);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
+        r.append(new QGraphicsRectItem(0,0,300,20));
+        r.last()->setPos(600, 445);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        ene.append(new muk());
+        ene.last()->setPos(750,400);
+        scene->addItem(ene.last());
+        ene.last()->setpx(750);
+        ene.last()->setpx1(600);
+        ene.last()->setpx2(860);
+        ene.last()->sett(0);
+        ene.last()->setvx(9);
+        ene.last()->setvida(v);
+        r.append(new QGraphicsRectItem(0,0,300,20));
+        r.last()->setPos(600, 189);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        ene.append(new muk());
+        ene.last()->setPos(750,144);
+        scene->addItem(ene.last());
+        ene.last()->setpx(750);
+        ene.last()->setpx1(600);
+        ene.last()->setpx2(860);
+        ene.last()->sett(0);
+        ene.last()->setvx(9);
+        ene.last()->setvida(v);
+        r.append(new QGraphicsRectItem(0,0,300,20));
+        r.last()->setPos(1200, 445);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        ene.append(new muk());
+        ene.last()->setPos(1350,400);
+        scene->addItem(ene.last());
+        ene.last()->setpx(1350);
+        ene.last()->setpx1(1200);
+        ene.last()->setpx2(1460);
+        ene.last()->sett(0);
+        ene.last()->setvx(9);
+        ene.last()->setvida(v);
+        r.append(new QGraphicsRectItem(0,0,300,20));
+        r.last()->setPos(1200, 189);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        ene.append(new muk());
+        ene.last()->setPos(1350,144);
+        scene->addItem(ene.last());
+        ene.last()->setpx(1350);
+        ene.last()->setpx1(1200);
+        ene.last()->setpx2(1460);
+        ene.last()->sett(0);
+        ene.last()->setvx(9);
+        ene.last()->setvida(v);
+        r.append(new QGraphicsRectItem(0,0,300,20));
+        r.last()->setPos(1800, 445);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        ene.append(new muk());
+        ene.last()->setPos(1950,400);
+        scene->addItem(ene.last());
+        ene.last()->setpx(1950);
+        ene.last()->setpx1(1800);
+        ene.last()->setpx2(2060);
+        ene.last()->sett(0);
+        ene.last()->setvx(9);
+        ene.last()->setvida(v);
+        r.append(new QGraphicsRectItem(0,0,300,20));
+        r.last()->setPos(1800, 189);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        ene.append(new muk());
+        ene.last()->setPos(1950,144);
+        scene->addItem(ene.last());
+        ene.last()->setpx(1950);
+        ene.last()->setpx1(1800);
+        ene.last()->setpx2(2060);
+        ene.last()->sett(0);
+        ene.last()->setvx(9);
+        ene.last()->setvida(v);
+        r.append(new QGraphicsRectItem(0,0,200,20));
+        r.last()->setPos(2300, 500);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        ene.append(new muk());
+        ene.last()->setPos(2400,435);
+        scene->addItem(ene.last());
+        ene.last()->setpx(2400);
+        ene.last()->setpx1(2300);
+        ene.last()->setpx2(2460);
+        ene.last()->sett(1);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
+        r.append(new QGraphicsRectItem(0,0,250,20));
+        r.last()->setPos(2250, 100);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        ene.append(new muk());
+        ene.last()->setPos(2370,35);
+        scene->addItem(ene.last());
+        ene.last()->setpx(2370);
+        ene.last()->setpx1(2250);
+        ene.last()->setpx2(2460);
+        ene.last()->sett(1);
+        ene.last()->setvx(ve);
+        ene.last()->setvida(v);
+    }
+    else if(nivel == 6)
+    {
+        a = 1;
+        jefe = 3;
+        scene->setSceneRect(0,0,1350,700);//1350 700
+        ui->graphicsView->setScene(scene);
+        ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        ui->graphicsView->setFixedSize(1350,700);
+        scene->setBackgroundBrush(QBrush(QImage(":/fondo")));
+        l1=new QGraphicsLineItem(0,0,1350,0);
+        l2=new QGraphicsLineItem(1350,0,1350,600);
+        l3=new QGraphicsLineItem(0,600,1350,600);
+        l4=new QGraphicsLineItem(0,0,0,1350);
+        l5=new QGraphicsLineItem(1350,0,1350,100);
+        Jefe = new muk();
+        Jefe->imagen(QString(":/sapo1.png"));
+        Jefe->setPos(1200, 530);
+        if(level == 1) Jefe->setvida(20);
+        else Jefe->setvida(25);
+        scene->addItem(Jefe);
+        QFont f("PMingLiU-ExtB", 14);
+        ui->label_3->setText(QString("Caiman jefe"));
+        ui->label_3->setFont(f);
+        QPalette palette = ui->label_3->palette();
+        palette.setColor(ui->label_3->foregroundRole(), Qt::white);
+        ui->label_3->setPalette(palette);
+        ui->label_4->setNum(Jefe->getvida());
+        QPalette palette2 = ui->label_4->palette();
+        palette2.setColor(ui->label_4->foregroundRole(), Qt::white);
+        ui->label_4->setPalette(palette2);
+        r.append(new QGraphicsRectItem(0,0,200,20));
+        r.last()->setPos(550, 470);
+        r.last()->setBrush(QBrush(":/barra"));
+        scene->addItem(r.last());
+        piston = new QGraphicsRectItem(0,0,200,20);
+        piston->setPos(550, 100);
+        piston->setBrush(QBrush(":/barra"));
+        scene->addItem(piston);
+        r.append(piston);
     }
     else if(nivel == 7)
     {
@@ -564,7 +754,7 @@ void Form::coliciones()
                         b2 = 1;
                         con2 = 22;
                     }
-                    else b2 = 0;
+                    else b2 = 0, Muk->setPos(Muk->x(),r.at(i)->pos().y()-39);
                     break;
                 }
                 else if(con2 > 20) b2 = 1;
@@ -604,10 +794,10 @@ void Form::teclas()
     }
     if(bt3 == 1 && !Muk->collidesWithItem(l4)) Muk->setPos(Muk->x()-m, Muk->y());
     if(bt4 == 1 && !Muk->collidesWithItem(l2)) Muk->setPos(Muk->x()+m, Muk->y());
-    if(nivel != 7 && nivel != 4)if(Muk->x() > 600 && Muk->x() < 1740) scene->setSceneRect(Muk->x()-600,0,scene->width(), scene->height());
+    if(nivel != 7 && nivel != 4 && nivel != 6)if(Muk->x() > 600 && Muk->x() < 1740) scene->setSceneRect(Muk->x()-600,0,scene->width(), scene->height());
     if(con2 < 20 && b2 == 0)
     {
-        Muk->setPos(Muk->x(), Muk->y()-m);
+        Muk->setPos(Muk->x(), Muk->y()-8);
         for(int i = 0; i < r.length(); i++)
         {
             if(Muk->collidesWithItem(r.at(i))) con2 = 22;
@@ -634,7 +824,12 @@ void Form::moverenemigos()
         if(ene.at(i)->getpx() < ene.at(i)->getpx1() || ene.at(i)->getpx() > ene.at(i)->getpx2()) ene.at(i)->setd(-1);
         ene.at(i)->mover(1);
         if(nivel == 1 || nivel == 2) ene.at(i)->movsapo(ene.at(i)->getd());
-        else if(nivel == 3 || nivel == 4) ene.at(i)->movsapo(ene.at(i)->getd());
+        else if(nivel == 3 || nivel == 4) ene.at(i)->movara(ene.at(i)->getd());
+        else if(nivel == 5)
+        {
+            if(ene.at(i)->gett() == 1) ene.at(i)->movsapo(ene.at(i)->getd());
+            else ene.at(i)->movara(ene.at(i)->getd());
+        }
         ene.at(i)->setPos(ene.at(i)->getpx(), ene.at(i)->y());
         if(con3 > 15)
         {
@@ -644,6 +839,7 @@ void Form::moverenemigos()
                 else agregarbala(ene.at(i), -1);
                 bala.last()->getbaf()->setvx(ene.at(i)->getvx());
                 bala.last()->getbaf()->seta(ene.at(i)->gett());
+                if(nivel == 1 || nivel == 2) bala.last()->balasapo();
                 if(nivel == 3) bala.last()->setact(2);
             }
             else if(ene.at(i)->gett() == 0 && Muk->x() < ene.at(i)->x()+500 && Muk->x() > ene.at(i)->x()-500)
@@ -652,7 +848,9 @@ void Form::moverenemigos()
                 else agregarbala(ene.at(i), -1);
                 bala.last()->getbaf()->setvx(ene.at(i)->getvx());
                 bala.last()->getbaf()->seta(ene.at(i)->gett());
+                if(nivel == 1 || nivel == 2) bala.last()->balasapo();
                 if(nivel == 3) bala.last()->setact(2);
+                else if(nivel == 5 && ene.at(i)->gett() == 0) bala.last()->setact(2);
             }
         }
     }
@@ -674,11 +872,13 @@ void Form::moverjefe()
         {
             if(con4 > 36)Jefe->setPos(Jefe->x()+8, Jefe->y()-7);
             else Jefe->setPos(Jefe->x()+8, Jefe->y()+7);
+            Jefe->movsapoj(1);
         }
         else if(con4 > 2 && !Jefe->collidesWithItem(l4))
         {
             if(con4 > 14)Jefe->setPos(Jefe->x()-8, Jefe->y()-7);
             else Jefe->setPos(Jefe->x()-8, Jefe->y()+7);
+            Jefe->movsapoj(-1);
         }
         if(con4 == 27 || con4 == 3) con4 = 1;
         if(Jefe->collidesWithItem(l4) || Jefe->collidesWithItem(l2))
@@ -699,7 +899,7 @@ void Form::moverjefe()
     else if(jefe == 2)
     {
         if(con4 > 8) con4 = 0;
-        /*if(con4 == 0 && Muk->x() < 1200)
+        if(con4 == 0 && Muk->x() < 1200)
         {
             agregarbala(Jefe, -1);
             bala.last()->getbaf()->tiroa(Jefe->x(),Jefe->y(),Muk->x(),Muk->y());
@@ -714,7 +914,7 @@ void Form::moverjefe()
             bala.last()->setPos(bala.last()->getbaf()->getx(), bala.last()->getbaf()->gety());
             bala.last()->getbaf()->setvx(9);
             bala.last()->getbaf()->tiroa(Jefe->x()+30 ,Jefe->y()+70,Muk->x(),Muk->y());
-        }*/
+        }
         if(b4 == 0) Jefe->setPos(Jefe->x(), Jefe->y()-6);
         else Jefe->setPos(Jefe->x(), Jefe->y()+6);
         if(Jefe->y() < 80) b4 = 1;
@@ -727,6 +927,61 @@ void Form::moverjefe()
         }
         con4++;
         aj = 1;
+    }
+    else if(jefe == 3)
+    {
+        if(Muk->x() > 500 && Muk->x() < 760 && Muk->y() < 470)
+        {
+            int d = 0;
+            if(Jefe->x() > 625 && Jefe->y() == 530) d = 8, Jefe->setPos(Jefe->x()+d, Jefe->y());
+            else if(Jefe->y() == 530) d = -8, Jefe->setPos(Jefe->x()+d, Jefe->y());
+            if(Jefe->x() > 500 && Jefe->x() < 720 && Jefe->y() < 470)
+            {
+                d = 1;
+                if(Jefe->x() > 625 && Jefe->y() < 410) Jefe->setPos(Jefe->x()-8, Jefe->y()+10);
+                else if(Jefe->y() < 410)Jefe->setPos(Jefe->x()+8, Jefe->y()+10);
+                if(Jefe->collidesWithItem(r.at(0))) Jefe->setPos(Jefe->x(),r.at(0)->y()-60);
+                if(Muk->x() >= Jefe->x() && con4 == 0) con4 = 2;
+                else if(Muk->x() < Jefe->x() && con4 == 0) con4 = 0;
+                if(con4 > 1) Jefe->setPos(Jefe->x()-8, Jefe->y());
+                else Jefe->setPos(Jefe->x()+8, Jefe->y());
+                if(con4 == 4 || con4 == 1) con4 = 0;
+                con4++;
+            }
+            if(Jefe->x() > 850 || (Jefe->x() > 625 && d == 0))
+            {
+                Jefe->setPos(Jefe->x()-8, Jefe->y()-10);
+            }
+            else if(Jefe->x() < 390 || (Jefe->x() < 625 && d == 0))
+            {
+                Jefe->setPos(Jefe->x()+8, Jefe->y()-10);
+            }
+        }
+        else if(Jefe->y() < 530) Jefe->setPos(Jefe->x(),Jefe->y()+8), con4 = 0;
+        else
+        {
+            if(Muk->x() >= Jefe->x() && con4 == 0) con4 = 40;
+            else if(Muk->x() < Jefe->x() && con4 == 0) con4 = 1;
+            if(Muk->collidesWithItem(Jefe))
+            {
+                bt3 = 0, bt4 = 0;
+                Muk->setvida(Muk->getvida()-1), ui->label_2->setNum(Muk->getvida());
+            }
+            if(con4 > 39 && !Jefe->collidesWithItem(l2))
+            {
+                Jefe->setPos(Jefe->x()+8, Jefe->y());
+            }
+            else if(con4 > 0 && !Jefe->collidesWithItem(l4))
+            {
+                Jefe->setPos(Jefe->x()-8, Jefe->y());
+            }
+            if(con4 == 80 || con4 == 39) con4 = -1;
+            con4++;
+      }
+        if(piston->y() < 400 && b4 == 0) piston->setPos(piston->x(), piston->y()+6);
+        else b4 = 1;
+        if(piston->y() > 80 && b4 == 1) piston->setPos(piston->x(), piston->y()-6);
+        else b4 = 0;
     }
     else if(jefe == 4)
     {
@@ -793,8 +1048,8 @@ void Form::moverjefe()
         if(Jefe->getvida() < 1 || Muk->getvida() < 1)
         {
             timer->stop();
-            if(Muk->getvida() < 1 && Jefe->getvida() > 0) mensaje(QString("Ganador J2"));
-            else if(Muk->getvida() > 0 && Jefe->getvida() < 1) mensaje(QString("Ganador J1"));
+            if(Muk->getvida() < 1 && Jefe->getvida() > 0) mensaje(QString("Ganador P2"));
+            else if(Muk->getvida() > 0 && Jefe->getvida() < 1) mensaje(QString("Ganador P1"));
             else mensaje(QString("Empate"));
         }
     }
@@ -920,6 +1175,8 @@ void Form::guardar()
        QTextStream text(&file);
        text<< niveltotal;
        text<< "  \n";
+       text<< level;
+       text<< "  \n";
        text<< nivel;
        text<< "  \n";
        for(int j = 0; j < ene.size(); j++)
@@ -959,6 +1216,13 @@ void Form::guardar()
            text<<" ";
            text<< bala.at(i)->getbaf()->getvx();
            text<<" ";
+           if(nivel == 4)
+           {
+               text<< bala.at(i)->getbaf()->getb();
+               text<<" ";
+               text<< bala.at(i)->getbaf()->getp();
+               text<<" ";
+           }
            text<<'\n';
        }
        text<<"## \n";
@@ -1008,6 +1272,9 @@ void Form::cargar()
         int n = 0;
         n = linea.indexOf(" ");
         niveltotal = linea.left(n).toInt();
+        linea = file.readLine();
+        n = linea.indexOf(" ");
+        level = linea.left(n).toInt();
         linea = file.readLine();
         n = linea.indexOf(" ");
         nivel = linea.left(n).toInt();
@@ -1062,6 +1329,11 @@ void Form::cargar()
                     else if(n2 == 4) bala.last()->getbaf()->seta(linea.left(n).toInt());
                     else if(n2 == 5) bala.last()->setact(linea.left(n).toInt());
                     else if(n2 == 6) bala.last()->getbaf()->setvx(linea.left(n).toInt()), scene->addItem(bala.last());
+                    if(nivel == 4)
+                    {
+                        if(n2 == 7) bala.last()->getbaf()->setb(linea.left(n).toInt());
+                        if(n2 == 8) bala.last()->getbaf()->setp(linea.left(n).toInt());
+                    }
                     n2++;
                 }
                 if(linea.left(n) == "\r\n")
@@ -1149,6 +1421,11 @@ void Form::mensaje(QString men)
     ui->label_6->setPalette(palette2);
     connect(timer,SIGNAL(timeout()),this,SLOT(final()));
     timer->start(5500);
+}
+
+void Form::setlevel(int l)
+{
+    level = l;
 }
 void Form::final()
 {

@@ -31,8 +31,10 @@ public:
     void movsapo(int b);
     void imagen(QString s);
     void movMuk(int b);
+    void movara(int b);
     void disMuk(int e);
     int getvx();
+    void movsapoj(int b);
 };
 
 #endif // MUK_H

@@ -17,6 +17,7 @@ public:
     explicit principal(QWidget *parent = 0);
     void setniveltotal(int n);
     void setusu(QString u);
+    void setlevel(int l);
     ~principal();
 
 private slots:
@@ -42,6 +43,7 @@ private:
     QString usu;
     int nivel = 0;
     int niveltotal = 0;
+    int level = 1;
 };
 
 #endif // PRINCIPAL_H

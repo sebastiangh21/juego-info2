@@ -21,6 +21,10 @@ public:
     bool geta();
     void setvx(float a);
     void setvy(float a);
+    void setp(float e);
+    float getp();
+    void setb(float e);
+    float getb();
     void tiroa(float x1, float y1, float x2, float y2);
 };
 

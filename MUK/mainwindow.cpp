@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "form.h"
+#include "nivel.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -14,6 +15,11 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::setusu(QString u)
 {
     usu = u;
+}
+
+void MainWindow::setlevel(int l)
+{
+    level = l;
 }
 MainWindow::~MainWindow()
 {
@@ -38,6 +44,7 @@ void MainWindow::on_play_clicked()
         a->setusu(usu);
     }
     file.close();
+    a->setlevel(level);
     a->show();
     close();
 }
@@ -71,5 +78,13 @@ void MainWindow::on_multi_clicked()
     f->inicializacion();
     f->setusuario(usu);
     f->show();
+    close();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    nivel *n = new nivel();
+    n->setusu(usu);
+    n->show();
     close();
 }

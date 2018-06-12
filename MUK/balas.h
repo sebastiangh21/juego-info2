@@ -15,6 +15,7 @@ private:
 public:
     balas(QGraphicsItem *carr = 0);
     balafisica* getbaf();
+    void balasapo();
     void setact(int a);
     int getact();
     ~balas();

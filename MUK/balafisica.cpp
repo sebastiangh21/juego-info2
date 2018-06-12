@@ -47,6 +47,26 @@ void balafisica::setvy(float a)
 {
     vy = a;
 }
+
+void balafisica::setp(float e)
+{
+    p = e;
+}
+
+float balafisica::getp()
+{
+    return p;
+}
+
+void balafisica::setb(float e)
+{
+    b = e;
+}
+
+float balafisica::getb()
+{
+    return b;
+}
 float balafisica::getvy()
 {
     return vy;

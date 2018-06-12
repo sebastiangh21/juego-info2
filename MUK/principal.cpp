@@ -20,6 +20,11 @@ void principal::setusu(QString u)
     usu = u;
 }
 
+void principal::setlevel(int l)
+{
+    level = l;
+}
+
 principal::~principal()
 {
     delete ui;
@@ -103,6 +108,7 @@ void principal::on_jugar_clicked()
         a->setnivel(nivel);
         a->setniveltotal(niveltotal);
         a->setusuario(usu);
+        a->setlevel(level);
         a->inicializacion();
         a->show();
         close();

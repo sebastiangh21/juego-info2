@@ -40,6 +40,7 @@ public:
     void cargar();
     void setusuario(QString nom);
     void mensaje(QString men);
+    void setlevel(int l);
     ~Form();
 
 private:
@@ -51,6 +52,7 @@ private:
     muk* Jefe;
     QString usu;
     QList<QGraphicsRectItem*> r;
+    QGraphicsRectItem *piston;
     QList<muk*> ene;
     QGraphicsLineItem* l1;
     QGraphicsLineItem* l2;
@@ -59,6 +61,7 @@ private:
     QGraphicsLineItem* l5;
     int d = 1;
     int d2 = -1;
+    int level = 1;
     bool a = 0;
     bool b = 0;
     bool b2 = 1;

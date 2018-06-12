@@ -2,7 +2,7 @@
 #include <QApplication>
 #include <QSplashScreen>
 #include <QTimer>
-#include "login.h"
+#include "imageinicio.h"
 
 int main(int argc, char *argv[])
 {
@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QSplashScreen *splash = new QSplashScreen;
     splash->setPixmap(QPixmap(":/inicio.png"));
     splash->show();
-    login w;
+    imageinicio w;
     QTimer::singleShot(2500,splash,SLOT(close()));
     QTimer::singleShot(2500,&w,SLOT(show()));
     //w.show();

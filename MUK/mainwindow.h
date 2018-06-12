@@ -16,6 +16,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     void setusu(QString u);
+    void setlevel(int l);
     ~MainWindow();
 
 private slots:
@@ -27,11 +28,14 @@ private slots:
 
     void on_multi_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     principal *a;
     controles *c;
     QString usu;
+    int level = 1;
 };
 
 #endif // MAINWINDOW_H

@@ -12,6 +12,11 @@ balafisica *balas::getbaf()
     return bala;
 }
 
+void balas::balasapo()
+{
+    setPixmap(QPixmap(":/balasapo.png"));
+}
+
 void balas::setact(int a)
 {
     act = a;

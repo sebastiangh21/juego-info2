@@ -33,7 +33,9 @@ SOURCES += \
     principal.cpp \
     controles.cpp \
     login.cpp \
-    registro.cpp
+    registro.cpp \
+    nivel.cpp \
+    imageinicio.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -44,7 +46,9 @@ HEADERS += \
     principal.h \
     controles.h \
     login.h \
-    registro.h
+    registro.h \
+    nivel.h \
+    imageinicio.h
 
 FORMS += \
         mainwindow.ui \
@@ -52,7 +56,9 @@ FORMS += \
     principal.ui \
     controles.ui \
     login.ui \
-    registro.ui
+    registro.ui \
+    nivel.ui \
+    imageinicio.ui
 
 RESOURCES += \
     resources.qrc

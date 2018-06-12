@@ -2,7 +2,7 @@
 
 muk::muk(QGraphicsItem *carr):QGraphicsPixmapItem(carr)
 {
-    setPixmap(QPixmap(":/playmove.png"));
+    setPixmap(QPixmap(":/"));
     vida = 0, d = 1, px = 0, px1 = 0, px2 = 0, vx = 17, cont = 0;
     t = 0;
 }
@@ -102,7 +102,35 @@ void muk::movsapo(int b)
         if (cont==10)cont=0;
     }
     cont++;
+}
+void muk::movsapoj(int b)
+{
+    if(b == 1)
+    {
+        if (cont<5)
+        {
 
+            setPixmap(QPixmap(":/sapoj1.png"));
+        }
+        else if (cont >5)
+        {
+            setPixmap(QPixmap(":/sapoj2.png"));
+        }
+        if (cont==10)cont=0;
+    }
+    else
+    {
+        if (cont<5)
+        {
+            setPixmap(QPixmap(":/sapoj3.png"));
+        }
+        else if (cont >5)
+        {
+            setPixmap(QPixmap(":/sapoj4.png"));
+        }
+        if (cont==10)cont=0;
+    }
+    cont++;
 }
 void muk::imagen(QString s)
 {
@@ -130,6 +158,33 @@ void muk::movMuk(int b)
         else if (cont >= 5)
         {
             setPixmap(QPixmap(":/Muk2.png"));
+        }
+    }
+    cont++;
+    if (cont==10)cont=0;
+}
+void muk::movara(int b)
+{
+    if(b == 1)
+    {
+        if (cont<5 && cont > -1)
+        {
+            setPixmap(QPixmap(":/araña1.png"));
+        }
+        else if (cont >= 5)
+        {
+            setPixmap(QPixmap(":/araña2.png"));
+        }
+    }
+    else
+    {
+        if (cont<5)
+        {
+            setPixmap(QPixmap(":/araña3.png"));
+        }
+        else if (cont >= 5)
+        {
+            setPixmap(QPixmap(":/araña4.png"));
         }
     }
     cont++;

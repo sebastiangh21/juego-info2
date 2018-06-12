@@ -7,13 +7,29 @@
         <file>Muk3.png</file>
         <file>Muk2.png</file>
         <file>Muk4.png</file>
-        <file>sapo1.png</file>
-        <file>sapo2.png</file>
-        <file>sapo3.png</file>
-        <file>sapo4.png</file>
         <file>fondo.png</file>
         <file>barra.png</file>
         <file>balamuk.png</file>
         <file>inicio.png</file>
+        <file>animal1.jpg</file>
+        <file>animal2.jpg</file>
+        <file>animal3.jpg</file>
+        <file>animal4.jpg</file>
+        <file>animal5.jpg</file>
+        <file>araña1.png</file>
+        <file>araña2.png</file>
+        <file>araña3.png</file>
+        <file>araña4.png</file>
+        <file>Fondo2.png</file>
+        <file>balasapo.png</file>
+        <file>sapo1.png</file>
+        <file>sapo2.png</file>
+        <file>sapo3.png</file>
+        <file>sapo4.png</file>
+        <file>sapoj1.png</file>
+        <file>sapoj2.png</file>
+        <file>sapoj3.png</file>
+        <file>sapoj4.png</file>
+        <file>rect.png</file>
     </qresource>
 </RCC>
