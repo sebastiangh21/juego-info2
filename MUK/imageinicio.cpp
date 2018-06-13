@@ -18,7 +18,8 @@ imageinicio::imageinicio(QWidget *parent) :
 
 void imageinicio::pregunta()
 {
-    ele = rand() % 5 +1;
+    ele = rand() % 5 +1;// seleciona imagen
+    //se muestra imagen y posible respuestas
     if(ele == 1)
     {
         ui->imagen->setPixmap(QPixmap(":/animal1.jpg"));
@@ -62,7 +63,7 @@ imageinicio::~imageinicio()
 {
     delete ui;
 }
-
+//se compara respuesta ingresada con la respuesta
 void imageinicio::on_opcion1_clicked()
 {
     if(res.at(ele-1) == ui->opcion1->text())

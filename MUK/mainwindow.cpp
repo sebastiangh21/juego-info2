@@ -27,7 +27,7 @@ MainWindow::~MainWindow()
 }
 void MainWindow::on_play_clicked()
 {
-    QFile file(usu);
+    QFile file(usu);//se abre seleccion de controles
     if(file.exists())
     {
         QString linea;
@@ -51,7 +51,7 @@ void MainWindow::on_play_clicked()
 
 void MainWindow::on_controles_clicked()
 {
-    c = new controles();
+    c = new controles();//se habre las instrucciones
     c->show();
     close();
 }
@@ -59,7 +59,7 @@ void MainWindow::on_controles_clicked()
 void MainWindow::on_cargar_clicked()
 {
     QFile file(usu);
-    if(file.exists())
+    if(file.exists())//se carga la ultima partida guardada
     {
         Form *f = new Form();
         f->inicializacion();
@@ -73,7 +73,7 @@ void MainWindow::on_cargar_clicked()
 
 void MainWindow::on_multi_clicked()
 {
-    Form *f = new Form();
+    Form *f = new Form();//se habre el multijugador
     f->setnivel(7);
     f->inicializacion();
     f->setusuario(usu);
@@ -83,7 +83,7 @@ void MainWindow::on_multi_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-    nivel *n = new nivel();
+    nivel *n = new nivel();//muestra la eleccion de dificultad
     n->setusu(usu);
     n->show();
     close();

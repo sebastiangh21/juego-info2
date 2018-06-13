@@ -74,7 +74,7 @@ int muk::getvx()
 {
     return vx;
 }
-void muk::movsapo(int b)
+void muk::movsapo(int b) // aqui se le ponen las imagenes al sapo en cada movimiento
 {
     if(b == 1)
     {
@@ -103,7 +103,7 @@ void muk::movsapo(int b)
     }
     cont++;
 }
-void muk::movsapoj(int b)
+void muk::movsapoj(int b)// imagenes del sapo gefe en movimiento
 {
     if(b == 1)
     {
@@ -136,7 +136,7 @@ void muk::imagen(QString s)
 {
     setPixmap(QPixmap(s));
 }
-void muk::movMuk(int b)
+void muk::movMuk(int b)// imagenes de muk(jugador) movimiento
 {
     if(b == 1)
     {
@@ -163,7 +163,7 @@ void muk::movMuk(int b)
     cont++;
     if (cont==10)cont=0;
 }
-void muk::movara(int b)
+void muk::movara(int b)// imagenes de la araña en movimiento
 {
     if(b == 1)
     {
@@ -190,7 +190,7 @@ void muk::movara(int b)
     cont++;
     if (cont==10)cont=0;
 }
-void muk::disMuk(int e)
+void muk::disMuk(int e)// imagen de muk cuando dispara
 {
     if(e == 1) setPixmap(QPixmap(":/MukDD.png"));
     else setPixmap(QPixmap(":/MukDI.png"));

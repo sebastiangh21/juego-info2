@@ -53,6 +53,7 @@ private:
     QString usu;
     QList<QGraphicsRectItem*> r;
     QGraphicsRectItem *piston;
+    muk* t;
     QList<muk*> ene;
     QGraphicsLineItem* l1;
     QGraphicsLineItem* l2;

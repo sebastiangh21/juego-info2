@@ -31,5 +31,7 @@
         <file>rect.png</file>
         <file>spiderman.png</file>
         <file>fondo.png</file>
+        <file>playmove.png</file>
+        <file>telaraña.png</file>
     </qresource>
 </RCC>

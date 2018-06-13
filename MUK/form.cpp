@@ -611,6 +611,10 @@ void Form::inicializacion()
         r.last()->setPos(650, 300);
         r.last()->setBrush(QBrush(":/barra"));
         scene->addItem(r.last());
+        t = new muk();
+        t->setPos(1295, -218);
+        t->imagen(QString(":/telaraña.png"));
+        scene->addItem(t);
     }
     else if(nivel == 7)
     {
@@ -696,13 +700,14 @@ void Form::coliciones()//se verifica las coliciones por las cuales el personaja 
     {
         if(Muk->collidingItems().size() < 2)
         {
+            //colicciones con limites veticales
             if((Muk->collidesWithItem(l2) || Muk->collidesWithItem(l4)) && con2 > 20) b2 = 1, con2 = 22;
             else b2 = 0;
         }
         else b2 = 0;
         if(b2 == 0)
         {
-            for(int i = 0; i < r.size(); i++)
+            for(int i = 0; i < r.size(); i++)//colicciones con las barras
             {
                 if(Muk->collidesWithItem(r.at(i)))
                 {
@@ -735,7 +740,7 @@ void Form::coliciones()//se verifica las coliciones por las cuales el personaja 
 void Form::teclas()//se realiza acciones con las teclas seleccionadas
 {
     Muk->movMuk(d);
-    if(bt1 == 1 && b == 0)
+    if(bt1 == 1 && b == 0)//tecla de tiro rectilineo
     {
         b = 1;
         agregarbala(Muk, d);
@@ -743,7 +748,7 @@ void Form::teclas()//se realiza acciones con las teclas seleccionadas
         bala.last()->setact(1);
         Muk->disMuk(d);
     }
-    if(bt2 == 1 && b == 0)
+    if(bt2 == 1 && b == 0)//tecla de tiro parabolico
     {
         b = 1;
         agregarbala(Muk, d);
@@ -781,7 +786,7 @@ void Form::moverenemigos()//se mueven y se agregan balas
     for(int i = 0; i<ene.length(); i++)
     {
         if(ene.at(i)->getpx() < ene.at(i)->getpx1() || ene.at(i)->getpx() > ene.at(i)->getpx2()) ene.at(i)->setd(-1);
-        ene.at(i)->mover(1);
+        ene.at(i)->mover(1);// se mueve enemigo
         if(nivel == 1 || nivel == 2) ene.at(i)->movsapo(ene.at(i)->getd());
         else if(nivel == 3 || nivel == 5) ene.at(i)->movara(ene.at(i)->getd());
         else if(nivel == 4)
@@ -791,7 +796,7 @@ void Form::moverenemigos()//se mueven y se agregan balas
         }
         ene.at(i)->setPos(ene.at(i)->getpx(), ene.at(i)->y());
         if(con3 > 15)
-        {
+        {//se agregabala
             if(ene.at(i)->gett() == 1 && Muk->y() < ene.at(i)->y()+200 && Muk->y() > ene.at(i)->y()-300)
             {
                 if(ene.at(i)->getpx() < Muk->x()) agregarbala(ene.at(i), 1);
@@ -818,7 +823,7 @@ void Form::moverenemigos()//se mueven y se agregan balas
 }
 void Form::moverjefe()//funcion que contiene los jefes y sus acciones
 {
-    if(jefe == 1)
+    if(jefe == 1)//mov de jefe 1
     {
         if(Muk->x() >= Jefe->x() && con4 == 0) con4 = 46;
         else if(Muk->x() < Jefe->x() && con4 == 0) con4 = 26;
@@ -856,7 +861,7 @@ void Form::moverjefe()//funcion que contiene los jefes y sus acciones
         }
         con4--;
     }
-    else if(jefe == 2)
+    else if(jefe == 2)//mov del jefe 2
     {
         if(con4 > 8) con4 = 0;
         if(con4 == 0 && Muk->x() < 1200)
@@ -876,8 +881,8 @@ void Form::moverjefe()//funcion que contiene los jefes y sus acciones
             bala.last()->getbaf()->setvx(9);
             bala.last()->getbaf()->tiroa(Jefe->x()+30 ,Jefe->y()+70,Muk->x(),Muk->y());
         }
-        if(b4 == 0) Jefe->setPos(Jefe->x(), Jefe->y()-6);
-        else Jefe->setPos(Jefe->x(), Jefe->y()+6);
+        if(b4 == 0) Jefe->setPos(Jefe->x(), Jefe->y()-6), t->setPos(t->x(), t->y()-6);
+        else Jefe->setPos(Jefe->x(), Jefe->y()+6), t->setPos(t->x(), t->y()+6);
         if(Jefe->y() < 80) b4 = 1;
         else if(Jefe->y() > 350) b4 = 0;
         if(Jefe->getvida() == 0)
@@ -891,7 +896,7 @@ void Form::moverjefe()//funcion que contiene los jefes y sus acciones
     }
     else if(jefe == 4)
     {
-        if(bt8 == 1 && b6 == 0)
+        if(bt8 == 1 && b6 == 0)//se agrega bala
         {
             b6 = 1;
             agregarbala(Jefe, d2);
@@ -899,7 +904,7 @@ void Form::moverjefe()//funcion que contiene los jefes y sus acciones
             bala.last()->setact(1);
             Jefe->disMuk(d2);
         }
-        if(bt9 == 1 && b6 == 0)
+        if(bt9 == 1 && b6 == 0)// se agrega bala
         {
             b6 = 1;
             agregarbala(Jefe, d2);
@@ -910,11 +915,12 @@ void Form::moverjefe()//funcion que contiene los jefes y sus acciones
         Jefe->movMuk(d2);
         if(bt6 == 1 && !Jefe->collidesWithItem(l4)) Jefe->setPos(Jefe->x()-8, Jefe->y());
         if(bt7 == 1 && !Jefe->collidesWithItem(l2)) Jefe->setPos(Jefe->x()+8, Jefe->y());
-        if(con5 < 20 && b5 == 0)
+        if(con5 < 20 && b5 == 0)//condiciones de salto
         {
-            Jefe->setPos(Jefe->x(), Jefe->y()-8);
+            Jefe->setPos(Jefe->x(), Jefe->y()-8);//salto
             con5 ++;
         }
+        //condiones de caida
         else if(Jefe->collidingItems().empty() || b5 == 1) Jefe->setPos(Jefe->x(), Jefe->y()+8);
         else
         {
@@ -922,7 +928,7 @@ void Form::moverjefe()//funcion que contiene los jefes y sus acciones
             con5++;
         }
         b5 = 0;
-        for(int i = 0; i < r.length(); i++)
+        for(int i = 0; i < r.length(); i++)// se verifica coliccion con las barras
         {
             if(Jefe->collidesWithItem(r.at(i)))
             {
@@ -953,7 +959,7 @@ void Form::moverjefe()//funcion que contiene los jefes y sus acciones
         if(con6 > 12) con6 = 0, b6 = 0;
         if(Jefe->getvida() < 1 || Muk->getvida() < 1)
         {
-            timer->stop();
+            timer->stop();//se define si un jugador gano o si hubo un empate
             if(Muk->getvida() < 1 && Jefe->getvida() > 0) mensaje(QString("Ganador P2"));
             else if(Muk->getvida() > 0 && Jefe->getvida() < 1) mensaje(QString("Ganador P1"));
             else mensaje(QString("Empate"));
@@ -967,16 +973,18 @@ void Form::moverbalas()//se mueven balas sus coliciones y cuando se le quita vid
     for(int i = 0;i < bala.length(); i++)
     {
         e = 1;
-        bala.at(i)->getbaf()->mover();
+        bala.at(i)->getbaf()->mover();//se llama la funcion que mueve la parte fisica de las balas
         bala.at(i)->setPos(bala[i]->getbaf()->getx(), bala[i]->getbaf()->gety());
         if(bala.at(i)->x() < 0 || bala.at(i)->x() > 2500 || bala.at(i)->y() < 0 || bala.at(i)->y() > 600)
         {
-            if(!l.contains(i))l.append(i);
+            if(!l.contains(i))l.append(i); //si la bala se sale de los limites re agrega a lista a borrar
             e = 0;
         }
         if(!bala.at(i)->collidingItems().empty() && e == 1)
         {
+            //si la bala coliciona con Muk este pierde vida
             if(Muk->collidesWithItem(bala.at(i))) Muk->setvida(Muk->getvida()-1), ui->label_2->setNum(Muk->getvida());
+            //si la vida de Muk es menor a 1 se regresa a seleccion de niveles
             if(Muk->getvida() < 1 && nivel != 7) timer->stop(), mensaje(QString("Has Fallado"));
             if(bala.at(i)->getact() == 2 && Muk->collidesWithItem(bala.at(i))) m = 4, con7 = 0;
             if(bala.at(i)->getact() == 1)
@@ -1025,13 +1033,13 @@ void Form::moverbalas()//se mueven balas sus coliciones y cuando se le quita vid
 void Form::agregarbala(muk *m, int di)//se agrega bala
 {
     bala.append(new balas());
-    bala.last()->getbaf()->setx(m->x()+(di*60));
-    bala.last()->getbaf()->sety(m->y());
-    bala.last()->getbaf()->setd(di);
-    bala.last()->setPos(bala.last()->getbaf()->getx(), bala.last()->getbaf()->gety());
+    bala.last()->getbaf()->setx(m->x()+(di*60));//se da posicion x
+    bala.last()->getbaf()->sety(m->y());//se da posicion y
+    bala.last()->getbaf()->setd(di);//se da direccion
+    bala.last()->setPos(bala.last()->getbaf()->getx(), bala.last()->getbaf()->gety());//se da pocion en la scena
     scene->addItem(bala.last());
 }
-void Form::keyPressEvent(QKeyEvent *event){
+void Form::keyPressEvent(QKeyEvent *event){//funcion que detecta cuando se preciona una tecla
     if(event->key()==Qt::Key_Space) bt1 = 1;
     else if(event->key()==Qt::Key_M) bt2 = 1;
     if(event->key()==Qt::Key_U) bt8 = 1;
@@ -1045,7 +1053,7 @@ void Form::keyPressEvent(QKeyEvent *event){
     if(event->key()==Qt::Key_L) d2 = 1, bt7 = 1;
     if(event->key()==Qt::Key_I && con5 > 22) con5 = 0;
 }
-void Form::keyReleaseEvent(QKeyEvent *event)
+void Form::keyReleaseEvent(QKeyEvent *event)//funcion que detecta cuando se suelta una tecla
 {
     if(event->key()==Qt::Key_Space) bt1 = 0;
     if(event->key()==Qt::Key_M) bt2 = 0;
@@ -1076,16 +1084,16 @@ void Form::guardar()//se escribe en un archivo de texto los avances del usuario
    if(nivel != 7)
    {
        timer->stop();
-       QFile file(usu);
+       QFile file(usu);// se guardan los datos de la scena en un archivo de texto
        file.open(QIODevice::WriteOnly | QIODevice::Truncate  | QIODevice::Text);
        QTextStream text(&file);
-       text<< niveltotal;
+       text<< niveltotal;//se guardan el niveltotal en el primer renglon del archivo
        text<< "  \n";
-       text<< level;
+       text<< level;//se guardan el level en un archivo
        text<< "  \n";
-       text<< nivel;
+       text<< nivel;//se guarda nivel en un renglon
        text<< "  \n";
-       for(int j = 0; j < ene.size(); j++)
+       for(int j = 0; j < ene.size(); j++)// en un renglo se guarda los datos de los enemigos
        {
            text<< ene.at(j)->getpx();
            text<< " ";
@@ -1106,7 +1114,7 @@ void Form::guardar()//se escribe en un archivo de texto los avances del usuario
            text<< '\n';
        }
        text<<"# \n";
-       for(int i = 0; i < bala.length(); i++)
+       for(int i = 0; i < bala.length(); i++)// en un renglo se guarda los datos de las balas
        {
            text<< bala.at(i)->pos().x();
            text<< " ";
@@ -1129,7 +1137,7 @@ void Form::guardar()//se escribe en un archivo de texto los avances del usuario
            text<<'\n';
        }
        text<<"## \n";
-       text<<Muk->pos().x();
+       text<<Muk->pos().x();//se guardan los datos del personaje principal
        text<<" ";
        text<<Muk->pos().y();
        text<<" ";
@@ -1143,7 +1151,7 @@ void Form::guardar()//se escribe en un archivo de texto los avances del usuario
        text<<" ";
        text<<'\n';
        text<<"### \n";
-       if(nivel == 2)
+       if(nivel == 2 || nivel == 5)//se guardan los datos de los jefes
        {
            text<<Jefe->pos().x();
            text<<" ";
@@ -1167,20 +1175,20 @@ void Form::cargar()//se carga los progresos de un usuario
 {
     timer->stop();
     QFile file(usu);
-    if(nivel != 7 && file.exists())
+    if(nivel != 7 && file.exists())//se verifica la existencia del archivo de texto
     {
         QString linea;
         file.open(QIODevice::ReadOnly);
         linea = file.readLine();
         int n = 0;
         n = linea.indexOf(" ");
-        niveltotal = linea.left(n).toInt();
+        niveltotal = linea.left(n).toInt();//se lee la primera linea y se guarda el nivel total
         linea = file.readLine();
         n = linea.indexOf(" ");
-        level = linea.left(n).toInt();
+        level = linea.left(n).toInt();//se lee la linea y se guarda en level
         linea = file.readLine();
         n = linea.indexOf(" ");
-        nivel = linea.left(n).toInt();
+        nivel = linea.left(n).toInt();//se lee la linea y se guarda en nivel
         inicializacion();
         timer->stop();
         for(int i = 0; i<ene.size(); i++) scene->removeItem(ene.at(i));
@@ -1188,7 +1196,7 @@ void Form::cargar()//se carga los progresos de un usuario
         for(int i = 0; i<bala.size(); i++) scene->removeItem(bala.at(i));
         bala.clear();
         linea = file.readLine();
-        while(linea != "# \r\n")
+        while(linea != "# \r\n")//se leen los datos y se configuran los enemigos
         {
             ene.append(new muk());
             int n=0;
@@ -1217,7 +1225,7 @@ void Form::cargar()//se carga los progresos de un usuario
             linea = file.readLine();
         }
         linea = file.readLine();
-        while(linea != "## \r\n")
+        while(linea != "## \r\n")//se leen los datos y se configuran los balas
         {
             bala.append(new balas());
             int n=0;
@@ -1246,7 +1254,7 @@ void Form::cargar()//se carga los progresos de un usuario
             linea = file.readLine();
         }
         linea = file.readLine();
-        while(linea != "### \r\n")
+        while(linea != "### \r\n")//se lee la linea y se le da los valores a Muk
         {
             int n=0;
             int n2 = 0;
@@ -1271,7 +1279,7 @@ void Form::cargar()//se carga los progresos de un usuario
             linea = file.readLine();
         }
         linea = file.readLine();
-       while(linea != "#### \r\n")
+       while(linea != "#### \r\n")//se lee la linea y se le da los valores a Jefe
         {
             int n=0;
             int n2 = 0;
@@ -1301,7 +1309,7 @@ void Form::cargar()//se carga los progresos de un usuario
 
 void Form::setusuario(QString nom)
 {
-    usu = nom;
+    usu = nom;//se recive el usuario
 }
 
 void Form::mensaje(QString men)
@@ -1318,8 +1326,8 @@ void Form::mensaje(QString men)
     ui->label_6->setFont(f2);
     QPalette palette2 = ui->label_6->palette();
     palette2.setColor(ui->label_6->foregroundRole(), Qt::white);
-    ui->label_6->setPalette(palette2);
-    connect(timer,SIGNAL(timeout()),this,SLOT(final()));
+    ui->label_6->setPalette(palette2);//se pone formato al texto que se mostrara en pantalla
+    connect(timer,SIGNAL(timeout()),this,SLOT(final()));//se redefine la respuesta del timer para finalizar
     timer->start(5500);
 }
 
@@ -1329,9 +1337,9 @@ void Form::setlevel(int l)
 }
 void Form::final()
 {
-    QFile file(usu);
+    QFile file(usu);//se verifica si el archivo de texto existe
     if(file.exists())
-    {
+    {//se guarda el nivel total en el ultimo punto de acceso
         int t = niveltotal;
         cargar();
         niveltotal = t;
@@ -1340,13 +1348,13 @@ void Form::final()
     file.close();
     timer->stop();
     if(nivel != 7)
-    {
+    {//se regresa al menu de seleccion de niveles
         principal *p = new principal();
         p->setniveltotal(niveltotal);
         p->show();
     }
     else
-    {
+    {//si nivel es 7(multijugador) se regresa al menu principal
         MainWindow *p = new MainWindow();
         p->show();
     }
